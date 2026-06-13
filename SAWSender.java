@@ -16,6 +16,7 @@ public class SAWSender {
      * Estabelece a conexão com o host especificado, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
     public void establishConnection(String host, int port) {
+        Log.writeLine("Iniciando conexão...");
         // Monta o pacote SYN e calcula o CRC32 antes de enviar
         SrtpPacket synPacket = PacketFactory.createSynPacket(64);
         synPacket.calculateCrc32();
@@ -30,11 +31,14 @@ public class SAWSender {
 
             while (true) {
                 // Envia SYN
+                Log.writeLine("Enviando pacote SYN...");
                 socket.send(datagram);
 
                 try {
                     // Aguarda o SYN+ACK
                     DatagramPacket response = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                    Log.writeLine("Aguardando pacote SYN+ACK...");
+
                     socket.receive(response);
 
                     SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
@@ -42,8 +46,9 @@ public class SAWSender {
                     if (responsePacket != null && responsePacket.isSyn() && responsePacket.isAck()) {
                         break;
                     }
+                    Log.writeLine("Não recebi um pacote válido.");
                 } catch (SocketTimeoutException timeoutException) {
-                    // Timeout expirado: retransmite o SYN.
+                    Log.writeLine("Ocorreu timeout ao aguardar o SYN+ACK.");
                 }
             }
 
@@ -53,7 +58,7 @@ public class SAWSender {
             byte[] ackBytes = ackPacket.toBytes();
             DatagramPacket ackDatagram = new DatagramPacket(ackBytes, ackBytes.length, address, port);
             socket.send(ackDatagram);
-            System.out.println("Enviado ACK final");
+            Log.writeLine("Enviando pacote ACK final para completar o handshake...");
         } catch (Exception exception) {
             throw new RuntimeException("Falha ao enviar o pacote SYN via UDP", exception);
         }

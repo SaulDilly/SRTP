@@ -23,11 +23,13 @@ public class SAWReceiver {
             while (true) {
                 // Escuta pacote de SYN
                 DatagramPacket incoming = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                Log.writeLine("Aguardando conexão do sender...");
                 socket.receive(incoming);
                 
                 // Se estiver inválido ou não for um SYN, ignora e continua escutando
                 SrtpPacket synPacket = SrtpPacket.fromBytes(Arrays.copyOf(incoming.getData(), incoming.getLength()));
                 if (synPacket == null || !synPacket.isSyn()) {
+                    Log.writeLine("Não recebi um pacote válido.");
                     continue;
                 }
 
@@ -45,26 +47,29 @@ public class SAWReceiver {
                 // Estado intermediário: aguardando ACK final ou o início da transmissão
                 while (true) {
                     // Realiza o envio do SYN+ACK
+                    Log.writeLine("Enviando pacote SYN+ACK...");
                     socket.send(synAckDatagram);
 
                     // Aguarda o ACK do sender
                     try {
                         DatagramPacket ackDatagram = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                        Log.writeLine("Aguardando pacote ACK...");
                         socket.receive(ackDatagram);
-                        
-                        System.out.println("Recebeu pacote final");
 
                         // Trata o pacote recebido
                         SrtpPacket ackPacket = SrtpPacket.fromBytes(Arrays.copyOf(ackDatagram.getData(), ackDatagram.getLength()));
                         if (ackPacket != null && ackPacket.isAck() && !ackPacket.isSyn()) {
+                            Log.writeLine("Recebi um pacote válido de ACK.");
                             return;
                         }
                         
                         // Se é pacote válido e é o início da transmissão, considera a conexão estabelecida e parte para o tratamento
                         if (isDataStartPacket(ackPacket)) {
+                            Log.writeLine("Recebi um pacote inicial de transmissão, considerando como ACK OK.");
                             return;
                         }
                     } catch (SocketTimeoutException timeoutException) {
+                        Log.writeLine("Ocorreu timeout.");
                     }
                 }
             }

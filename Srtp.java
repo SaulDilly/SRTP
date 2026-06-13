@@ -7,8 +7,13 @@ public class Srtp {
 
         if ("--listen".equalsIgnoreCase(args[0])) {
             int port = parsePort(args, "--port");
-            SAWReceiver receiver = new SAWReceiver();
-            receiver.listenConnection(port);
+            Log.initReceiver();
+            try {
+                SAWReceiver receiver = new SAWReceiver();
+                receiver.listenConnection(port);
+            } finally {
+                Log.close();
+            }
             return;
         }
 
@@ -22,8 +27,13 @@ public class Srtp {
         }
 
         // O filePath foi interpretado e fica disponível para o próximo passo da transmissão.
-        SAWSender sender = new SAWSender();
-        sender.establishConnection(host, port);
+        Log.initSender();
+        try {
+            SAWSender sender = new SAWSender();
+            sender.establishConnection(host, port);
+        } finally {
+            Log.close();
+        }
     }
 
     private static String parseValue(String[] args, String flag) {
