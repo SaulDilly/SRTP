@@ -190,5 +190,51 @@ public class SAWSender {
     private boolean isAckForSeq(SrtpPacket packet, int expectedSeq) {
         return packet != null && packet.isAck() && packet.getAckSeq() == (expectedSeq & SEQ_MASK);
     }
+
+    /*
+     * Encerra a conexão, enviando FIN e aguardando FIN+ACK
+     */
+    public void endConnection() {
+        Log.writeLine("Encerrando conexão...");
+        // Monta o pacote FIN e calcula o CRC32 antes de enviar
+        SrtpPacket finPacket = PacketFactory.createFinPacket();
+        finPacket.calculateCrc32();
+        byte[] packetBytes = finPacket.toBytes();
+
+        try (DatagramSocket socket = new DatagramSocket()) {
+            // Monta o datagrama com base no pacote convertido para bytes
+            socket.setSoTimeout(TIMEOUT);
+            InetAddress address = InetAddress.getByName(host);
+            DatagramPacket datagram = new DatagramPacket(packetBytes, packetBytes.length, address, port);
+            // Cabeçalho tem 9 bytes
+            byte[] receiveBuffer = new byte[9];
+
+            while (true) {
+                // Envia FIN
+                Log.writeLine("Enviando pacote FIN...");
+                socket.send(datagram);
+
+                try {
+                    // Aguarda o FIN+ACK
+                    DatagramPacket response = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+                    Log.writeLine("Aguardando pacote FIN+ACK...");
+
+                    socket.receive(response);
+
+                    SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
+                    // Se é um pacote válido e é um FIN+ACK, sai do loop
+                    if (responsePacket != null && responsePacket.isFin() && responsePacket.isAck()) {
+                        break;
+                    }
+                    Log.writeLine("Não recebi um pacote válido.");
+                } catch (SocketTimeoutException timeoutException) {
+                    Log.writeLine("Ocorreu timeout ao aguardar o FIN+ACK.");
+                }
+            }
+        } catch (Exception exception) {
+            throw new RuntimeException("Falha ao enviar o pacote FIN via UDP", exception);
+        }
+
+    }
     
 }

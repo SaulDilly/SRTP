@@ -20,7 +20,6 @@ public class PacketFactory {
         SrtpPacket packet = new SrtpPacket(0);
         packet.setAck(true);
         packet.setAckSeq(seq);
-        packet.setLength(0);
         return packet;
     }
 
@@ -28,7 +27,19 @@ public class PacketFactory {
         SrtpPacket packet = new SrtpPacket(0);
         packet.setNack(true);
         packet.setAckSeq(seq);
-        packet.setLength(0);
+        return packet;
+    }
+
+    public static SrtpPacket createFinPacket() {
+        SrtpPacket packet = new SrtpPacket(0);
+        packet.setFin(true);
+        return packet;
+    }
+
+    public static SrtpPacket createFinAckPacket() {
+        SrtpPacket packet = new SrtpPacket(0);
+        packet.setFin(true);
+        packet.setAck(true);
         return packet;
     }
 }

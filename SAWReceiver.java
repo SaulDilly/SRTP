@@ -110,8 +110,6 @@ public class SAWReceiver {
         socket.setSoTimeout(TIMEOUT);
         byte[] receiveBuffer = new byte[HEADER_SIZE + MAX_PAYLOAD];
         int lastSeqRead = SEQ_MASK;
-        boolean streamFinished = false;
-        int idleTimeoutsAfterFinish = 0;
 
         // Recebe os pacotes do sender
         while (true) {
@@ -122,22 +120,36 @@ public class SAWReceiver {
             try {
                 socket.receive(dataDatagram);
             } catch (SocketTimeoutException timeoutException) {
-                if (streamFinished) {
-                    idleTimeoutsAfterFinish++;
-                    if (idleTimeoutsAfterFinish >= 10) {
-                        return;
-                    }
-                }
                 continue;
             }
-
-            idleTimeoutsAfterFinish = 0;
 
             // Converte o pacote recebido para o objeto de pacote, validando o CRC32 e a estrutura do pacote
             SrtpPacket dataPacket = SrtpPacket.fromBytes(Arrays.copyOf(dataDatagram.getData(), dataDatagram.getLength()));
             if (dataPacket == null || dataPacket.isSyn() || dataPacket.isAck() || dataPacket.isNack()) {
                 Log.writeLine("Pacote de dados inválido.");
                 continue;
+            }
+
+            // Se é pacote de finalização de transmissão, salva o arquivo e encerra o aguardo de mensagens
+            if (dataPacket.isFin()) {
+                Log.writeLine("Push da aplicação com " + applicationBuffer.size() + " bytes.");
+                try (FileOutputStream outputStream = new FileOutputStream("received.txt")) {
+                    outputStream.write(applicationBuffer.toByteArray());
+                    outputStream.flush();
+                }
+                applicationBuffer.reset();
+
+                // Envia FIN+ACK de resposta para o sender, para confirmar o recebimento do FIN e a finalização da transmissão
+                SrtpPacket finAckPacket = PacketFactory.createFinAckPacket();
+                finAckPacket.calculateCrc32();
+                byte[] finAckBytes = finAckPacket.toBytes();
+                DatagramPacket finAckResponse = new DatagramPacket(
+                        finAckBytes,
+                        finAckBytes.length,
+                        dataDatagram.getAddress(),
+                        dataDatagram.getPort());
+                socket.send(finAckResponse);
+                break;
             }
             
             // O tamanho do datagrama deve ser o cabeçalho + payload
@@ -155,7 +167,9 @@ public class SAWReceiver {
             if (dataPacket.getSeq() == lastSeqRead) {
                 Log.writeLine("Pacote duplicado recebido para seq=" + dataPacket.getSeq() + ", reenviando ACK equivalente.");
             } else if (dataPacket.getSeq() == expectedSeq) { // Se é a sequência esperada, escreve no buffer da aplicação e atualiza o último número de sequência lido
-                applicationBuffer.write(payload);
+                if (dataPacket.getLength() > 0) {
+                    applicationBuffer.write(payload);
+                }
                 lastSeqRead = dataPacket.getSeq();
             } else { // Se o pacote tem o CRC32 válido, mas a sequência é diferente do esperado, envia NACK
                 Log.writeLine("Sequência inesperada recebida: " + dataPacket.getSeq() + ", enviando NACK para seq=" + expectedSeq);
@@ -183,22 +197,7 @@ public class SAWReceiver {
                     dataDatagram.getAddress(),
                     dataDatagram.getPort());
             socket.send(ackResponse);
-                Log.writeLine("ACK enviado para seq=" + ackSeqToSend);
-
-            if (payloadLength < MAX_PAYLOAD) {
-                if (!streamFinished) {
-                    Log.writeLine("Push da aplicação com " + applicationBuffer.size() + " bytes.");
-                    try (FileOutputStream outputStream = new FileOutputStream("received.java")) {
-                        outputStream.write(applicationBuffer.toByteArray());
-                        outputStream.flush();
-                    }
-                    streamFinished = true;
-                } else {
-                    Log.writeLine("Pacote final duplicado recebido, ACK reenviado.");
-                }
-
-                applicationBuffer.reset();
-            }
+            Log.writeLine("ACK enviado para seq=" + ackSeqToSend);
         }
     }
     

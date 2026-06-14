@@ -25,6 +25,7 @@ public class Srtp {
             SAWSender sender = new SAWSender();
             sender.establishConnection(parser.getHost(), parser.getPort());
             sender.sendFile(parser.getFilePath());
+            sender.endConnection();
         } finally {
             Log.close();
         }
