@@ -87,6 +87,7 @@ public class SAWSender {
             throw new IllegalArgumentException("Caminho do arquivo inválido.");
         }
 
+        long startTimeNanos = System.nanoTime();
         boolean sentAnyData = false;
         boolean lastChunkWasFull = false;
 
@@ -182,6 +183,9 @@ public class SAWSender {
             throw new RuntimeException("Falha ao ler o arquivo para envio", exception);
         } catch (Exception exception) {
             throw new RuntimeException("Falha ao enviar o arquivo", exception);
+        } finally {
+            long elapsedMillis = (System.nanoTime() - startTimeNanos) / 1_000_000L;
+            Log.writeLine("Envio concluído em " + elapsedMillis + " ms.");
         }
 
 
