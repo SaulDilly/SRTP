@@ -63,7 +63,7 @@ public class SAWSender {
             }
 
             // Envia o ACK final para completar o handshake
-            SrtpPacket ackPacket = PacketFactory.createAckPacket();
+            SrtpPacket ackPacket = PacketFactory.createAckPacket(0);
             ackPacket.calculateCrc32();
             byte[] ackBytes = ackPacket.toBytes();
             DatagramPacket ackDatagram = new DatagramPacket(ackBytes, ackBytes.length, address, port);
@@ -108,20 +108,21 @@ public class SAWSender {
                 // Payload = próximos N bytes do arquivo
                 byte[] payload = Arrays.copyOf(buffer, read);
 
-                // Instancia o pacote de dados da sequência atual, com o tamanho lido
-                SrtpPacket packet = new SrtpPacket(seq);
-                packet.setLength(read);
-                // Calcula e armazena o CRC32 do pacote, considerando o cabeçalho e o payload
-                packet.calculateCrc32(payload);
-                byte[] header = packet.toBytes();
-                byte[] packetBytes = new byte[header.length + payload.length];
-
-                // Concatena o cabeçalho com o payload para formar o pacote completo a ser enviado
-                System.arraycopy(header, 0, packetBytes, 0, header.length);
-                System.arraycopy(payload, 0, packetBytes, header.length, payload.length);
-
                 // Loop para enviar o pacote formado até receber o ack
+                int currentSeq = seq;
                 while (true) {
+                    // Instancia o pacote de dados da sequência atual, com o tamanho lido
+                    SrtpPacket packet = new SrtpPacket(currentSeq);
+                    packet.setLength(read);
+                    // Calcula e armazena o CRC32 do pacote, considerando o cabeçalho e o payload
+                    packet.calculateCrc32(payload);
+                    byte[] header = packet.toBytes();
+                    byte[] packetBytes = new byte[header.length + payload.length];
+
+                    // Concatena o cabeçalho com o payload para formar o pacote completo a ser enviado
+                    System.arraycopy(header, 0, packetBytes, 0, header.length);
+                    System.arraycopy(payload, 0, packetBytes, header.length, payload.length);
+
                     Log.writeLine("Enviando pacote de dados seq=" + seq + " tamanho=" + read);
                     socket.send(new DatagramPacket(packetBytes, packetBytes.length, address, port));
 
@@ -130,16 +131,23 @@ public class SAWSender {
                         Log.writeLine("Aguardando ACK do seq=" + seq);
                         socket.receive(response);
 
-                        SrtpPacket ackPacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
-                        if (ackPacket != null && ackPacket.isAck() && ackPacket.getAckSeq() == seq) {
-                            Log.writeLine("ACK recebido para seq=" + seq);
+                        SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
+                        if (isAckForSeq(responsePacket, currentSeq)) {
+                            Log.writeLine("ACK recebido para seq=" + currentSeq);
                             break;
                         }
+
+                        if (responsePacket != null && responsePacket.isNack()) {
+                            currentSeq = responsePacket.getAckSeq() & SEQ_MASK;
+                            seq = currentSeq;
+                            Log.writeLine("NACK recebido. Reenviando a partir da seq=" + currentSeq);
+                            continue;
+                        }
                     } catch (SocketTimeoutException timeoutException) {
-                        Log.writeLine("Timeout ao aguardar ACK do seq=" + seq + ", reenviando pacote.");
+                        Log.writeLine("Timeout ao aguardar ACK do seq=" + currentSeq + ", reenviando pacote.");
                     }
                 }
-                seq = (seq + 1) & SEQ_MASK;
+                seq = (currentSeq + 1) & SEQ_MASK;
             }
 
             // Se não enviou dados, ou se o último pacote enviado foi um pacote cheio (arquivo múltiplo de 255 bytes)
@@ -160,7 +168,7 @@ public class SAWSender {
                         socket.receive(response);
 
                         SrtpPacket ackPacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
-                        if (ackPacket != null && ackPacket.isAck() && ackPacket.getAckSeq() == seq) {
+                        if (isAckForSeq(ackPacket, seq)) {
                             Log.writeLine("ACK recebido para o pacote de finalização seq=" + seq);
                             break;
                         }
@@ -177,6 +185,10 @@ public class SAWSender {
         }
 
 
+    }
+
+    private boolean isAckForSeq(SrtpPacket packet, int expectedSeq) {
+        return packet != null && packet.isAck() && packet.getAckSeq() == (expectedSeq & SEQ_MASK);
     }
     
 }

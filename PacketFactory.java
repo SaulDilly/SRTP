@@ -12,15 +12,22 @@ public class PacketFactory {
         SrtpPacket packet = new SrtpPacket(0);
         packet.setSyn(true);
         packet.setAck(true);
-        packet.setAckSeq(0);
         packet.setLength(tamanhoJanela);
         return packet;
     }
 
-    public static SrtpPacket createAckPacket() {
+    public static SrtpPacket createAckPacket(int seq) {
         SrtpPacket packet = new SrtpPacket(0);
         packet.setAck(true);
-        packet.setAckSeq(0);
+        packet.setAckSeq(seq);
+        packet.setLength(0);
+        return packet;
+    }
+
+    public static SrtpPacket createNackPacket(int seq) {
+        SrtpPacket packet = new SrtpPacket(0);
+        packet.setNack(true);
+        packet.setAckSeq(seq);
         packet.setLength(0);
         return packet;
     }
