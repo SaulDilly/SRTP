@@ -1,56 +1,47 @@
 public class Srtp {
     public static void main(String[] args) throws Exception {
-        if (args.length == 0) {
+
+        ParameterParser parser = new ParameterParser(args);
+        
+        if (!parser.isValid()) {
             printUsage();
-            return;
+            throw new IllegalArgumentException("Parâmetros inválidos.");
         }
 
-        if ("--listen".equalsIgnoreCase(args[0])) {
-            int port = parsePort(args, "--port");
-            Log.initReceiver();
-            try {
-                SAWReceiver receiver = new SAWReceiver();
-                receiver.listenConnection(port);
-            } finally {
-                Log.close();
-            }
-            return;
+        if (parser.isListener()) {
+            execReceiver(parser);
+        } else {
+            execSender(parser);
         }
 
-        String host = parseValue(args, "--host");
-        int port = parsePort(args, "--port");
-        String filePath = parseValue(args, "--file");
+    }
 
-        if (host == null || filePath == null) {
-            printUsage();
-            throw new IllegalArgumentException("Modo sender requer --host, --port e --file.");
-        }
-
-        // O filePath foi interpretado e fica disponível para o próximo passo da transmissão.
+    /*
+     * Rotina de execução do sender, que estabelece a conexão e envia o arquivo
+     */
+    private static void execSender(ParameterParser parser) throws Exception {
         Log.initSender();
         try {
             SAWSender sender = new SAWSender();
-            sender.establishConnection(host, port);
+            sender.establishConnection(parser.getHost(), parser.getPort());
+            sender.sendFile(parser.getFilePath());
         } finally {
             Log.close();
         }
     }
 
-    private static String parseValue(String[] args, String flag) {
-        for (int i = 0; i < args.length - 1; i++) {
-            if (flag.equalsIgnoreCase(args[i])) {
-                return args[i + 1];
-            }
+    /*
+     * Rotina de execução do sender, escuta a conexão e recebe o arquivo
+     */
+    private static void execReceiver(ParameterParser parser) throws Exception {
+        Log.initReceiver();
+        try {
+            SAWReceiver receiver = new SAWReceiver();
+            receiver.listenConnection(parser.getPort());
+            receiver.receiveFile();
+        } finally {
+            Log.close();
         }
-        return null;
-    }
-
-    private static int parsePort(String[] args, String flag) {
-        String value = parseValue(args, flag);
-        if (value == null) {
-            throw new IllegalArgumentException("Parâmetro obrigatório ausente: " + flag);
-        }
-        return Integer.parseInt(value);
     }
 
     private static void printUsage() {

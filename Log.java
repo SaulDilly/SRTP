@@ -5,9 +5,6 @@ import java.io.IOException;
 public final class Log {
     private static BufferedWriter writer;
 
-    private Log() {
-    }
-
     public static void initSender() throws IOException {
         initialize("LogSender.txt");
     }

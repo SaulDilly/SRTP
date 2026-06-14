@@ -86,6 +86,30 @@ public class SrtpPacket {
     }
 
     /*
+     * Calcula o CRC32 com base nos dados atuais do objeto (somente cabeçalho)
+     */
+    public void calculateCrc32() {
+        // Constrói o cabeçalho em bytes para o CRC (sem considerar o campo de CRC)
+        byte[] header = buildHeader(false);
+        CRC32 crc = new CRC32();
+        crc.update(header, 0, header.length);
+        this.crc32 = crc.getValue();
+    }
+
+    /*
+     * Calcula o CRC32, sem incluir os bytes do CRC, concatenando com o payload (se houver) para o cálculo
+     */
+    public void calculateCrc32(byte[] payload) {
+        byte[] header = buildHeader(false);
+        CRC32 crc = new CRC32();
+        crc.update(header, 0, header.length);
+        if (payload != null && payload.length > 0) {
+            crc.update(payload, 0, payload.length);
+        }
+        this.crc32 = crc.getValue();
+    }
+
+    /*
      * Constrói um objeto do pacote de acordo com o array de bytes recebido
      * Se o CRC for inválido, retorna null
      */
@@ -107,8 +131,15 @@ public class SrtpPacket {
         packet.setNack((secondWord & 0x4000) != 0);
         packet.setAckSeq(secondWord & SEQ_MASK);
         packet.setLength(length);
-        packet.calculateCrc32();
-        if (packet.crc32 != receivedCrc) {
+
+        byte[] header = packet.buildHeader(false);
+        CRC32 crc = new CRC32();
+        crc.update(header, 0, header.length);
+        if (raw.length > 9) {
+            crc.update(raw, 9, raw.length - 9);
+        }
+
+        if (crc.getValue() != receivedCrc) {
             return null;
         }
         return packet;
@@ -119,17 +150,6 @@ public class SrtpPacket {
      */
     private byte[] buildHeader() {
         return buildHeader(true);
-    }
-
-    /*
-     * Calcula o CRC32 com base nos dados atuais do objeto
-     */
-    public void calculateCrc32() {
-        // Constrói o cabeçalho em bytes para o CRC (sem considerar o campo de CRC)
-        byte[] header = buildHeader(false);
-        CRC32 crc = new CRC32();
-        crc.update(header, 0, header.length);
-        this.crc32 = crc.getValue();
     }
 
     /*
