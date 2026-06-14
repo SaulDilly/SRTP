@@ -42,6 +42,6 @@ public final class Log {
 
     private static synchronized void initialize(String fileName) throws IOException {
         close();
-        writer = new BufferedWriter(new FileWriter(fileName, true));
+        writer = new BufferedWriter(new FileWriter(fileName, false));
     }
 }
