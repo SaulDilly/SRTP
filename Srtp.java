@@ -26,7 +26,7 @@ public class Srtp {
             SAWSender sender = new SAWSender();
             sender.establishConnection(parser.getHost(), parser.getPort());
             // Inicia envio a partir da porta 6000
-            Thread sendThread = new Thread(new SendFileTask(sender, parser.getPort(), parser.getFilePath()));
+            Thread sendThread = new Thread(new SendFileTask(sender, parser.getHost(), parser.getPort(), parser.getFilePath()));
             sendThread.start();
             // Inicia a thread de recebimento na porta 6001 para receber o arquivo resposta
             SAWReceiver receiver = new SAWReceiver();
@@ -35,7 +35,7 @@ public class Srtp {
             sendThread.join();
             receiveThread.join();
             // Finaliza a conexão
-            sender.endConnection(parser.getPort());
+            sender.endConnection(parser.getHost(), parser.getPort());
         } finally {
             Log.close();
         }
@@ -49,18 +49,18 @@ public class Srtp {
         try {
             // Estabele conexão na porta 6000 com o sender
             SAWReceiver receiver = new SAWReceiver();
-            receiver.listenConnection(parser.getPort());
+            String host = receiver.listenConnection(parser.getPort());
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
             Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort()));
             receiveThread.start();
             // Inicia envio a partir da porta 6001 para enviar o arquivo resposta
             SAWSender sender = new SAWSender();
-            Thread sendThread = new Thread(new SendFileTask(sender, parser.getPort() + 1, "envio_resposta.txt"));
+            Thread sendThread = new Thread(new SendFileTask(sender, host, parser.getPort() + 1, "envio_resposta.txt"));
             sendThread.start();
             receiveThread.join();
             sendThread.join();
             // Finaliza a conexão
-            sender.endConnection(parser.getPort() + 1);
+            sender.endConnection(host, parser.getPort() + 1);
         } finally {
             Log.close();
         }

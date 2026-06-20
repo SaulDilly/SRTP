@@ -15,7 +15,7 @@ public class SAWReceiver {
     /*
      * Escuta conexões de entrada na porta especificada, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
-    public void listenConnection(int port) {
+    public String listenConnection(int port) {
         try (DatagramSocket socket = new DatagramSocket(port)) {
             socket.setSoTimeout(TIMEOUT);
             byte[] receiveBuffer = new byte[HEADER_SIZE + MAX_PAYLOAD];
@@ -60,13 +60,13 @@ public class SAWReceiver {
                         SrtpPacket ackPacket = SrtpPacket.fromBytes(Arrays.copyOf(ackDatagram.getData(), ackDatagram.getLength()));
                         if (ackPacket != null && ackPacket.isAck() && !ackPacket.isSyn()) {
                             Log.writeLine("Recebi um pacote válido de ACK.");
-                            return;
+                            return incoming.getAddress().getHostAddress();
                         }
                         
                         // Se é pacote válido e é o início da transmissão, considera a conexão estabelecida e parte para o tratamento
                         if (isDataStartPacket(ackPacket)) {
                             Log.writeLine("Recebi um pacote inicial de transmissão, considerando como ACK OK.");
-                            return;
+                            return incoming.getAddress().getHostAddress();
                         }
                     } catch (SocketTimeoutException timeoutException) {
                         Log.writeLine("Ocorreu timeout.");

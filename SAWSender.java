@@ -9,19 +9,16 @@ import java.util.Arrays;
 public class SAWSender {
     private static final int SEQ_MASK = 0x3FFF;
     private int seq;
-    private String host;
     private static final int TIMEOUT = 100;
 
     public SAWSender() {
         this.seq = 0;
-        this.host = "";
     }
 
     /*
      * Estabelece a conexão com o host especificado, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
     public void establishConnection(String host, int port) {
-        this.host = host;
         Log.writeLine("Iniciando conexão...");
         // Monta o pacote SYN e calcula o CRC32 antes de enviar
         SrtpPacket synPacket = PacketFactory.createSynPacket(0);
@@ -75,7 +72,7 @@ public class SAWSender {
      * Envia arquivo, pacote a pacote
      * Envia, aguarda o ACK para cada pacote, e em caso de timeout, reenvia o pacote até receber o ACK correspondente
      */ 
-    public void sendFile(int port, String filePath) {
+    public void sendFile(String host, int port, String filePath) {
         if (host.isEmpty() || port <= 0) {
             throw new IllegalStateException("Conexão não estabelecida. Chame establishConnection() antes de enviar o arquivo.");
         }
@@ -195,7 +192,7 @@ public class SAWSender {
     /*
      * Encerra a conexão, enviando FIN e aguardando FIN+ACK
      */
-    public void endConnection(int port) {
+    public void endConnection(String host,int port) {
         Log.writeLine("Encerrando conexão...");
         // Monta o pacote FIN e calcula o CRC32 antes de enviar
         SrtpPacket finPacket = PacketFactory.createFinPacket();
