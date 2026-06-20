@@ -8,20 +8,14 @@ import java.util.Arrays;
 public class SAWReceiver {
 
     private static final int SEQ_MASK = 0x3FFF;
-    private int port;
     private static final int TIMEOUT = 100;
     private static final int MAX_PAYLOAD = 255;
     private static final int HEADER_SIZE = 9;
 
-    public SAWReceiver() {
-        this.port = 0;
-    }
-    
     /*
      * Escuta conexões de entrada na porta especificada, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
     public void listenConnection(int port) {
-        this.port = port;
         try (DatagramSocket socket = new DatagramSocket(port)) {
             socket.setSoTimeout(TIMEOUT);
             byte[] receiveBuffer = new byte[HEADER_SIZE + MAX_PAYLOAD];
@@ -97,7 +91,7 @@ public class SAWReceiver {
     /* 
      * Recebe o arquivo enviado pelo sender, pacote a pacote, enviando um ACK para cada pacote recebido 
      */
-    public void receiveFile() {
+    public void receiveFile(int port) {
         try (DatagramSocket socket = new DatagramSocket(port)) {
             receiveFile(socket);
         } catch (Exception exception) {

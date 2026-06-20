@@ -10,13 +10,11 @@ public class SAWSender {
     private static final int SEQ_MASK = 0x3FFF;
     private int seq;
     private String host;
-    private int port;
     private static final int TIMEOUT = 100;
 
     public SAWSender() {
         this.seq = 0;
         this.host = "";
-        this.port = 0;
     }
 
     /*
@@ -24,7 +22,6 @@ public class SAWSender {
      */ 
     public void establishConnection(String host, int port) {
         this.host = host;
-        this.port = port;
         Log.writeLine("Iniciando conexão...");
         // Monta o pacote SYN e calcula o CRC32 antes de enviar
         SrtpPacket synPacket = PacketFactory.createSynPacket(0);
@@ -78,7 +75,7 @@ public class SAWSender {
      * Envia arquivo, pacote a pacote
      * Envia, aguarda o ACK para cada pacote, e em caso de timeout, reenvia o pacote até receber o ACK correspondente
      */ 
-    public void sendFile(String filePath) {
+    public void sendFile(int port, String filePath) {
         if (host.isEmpty() || port <= 0) {
             throw new IllegalStateException("Conexão não estabelecida. Chame establishConnection() antes de enviar o arquivo.");
         }
@@ -198,7 +195,7 @@ public class SAWSender {
     /*
      * Encerra a conexão, enviando FIN e aguardando FIN+ACK
      */
-    public void endConnection() {
+    public void endConnection(int port) {
         Log.writeLine("Encerrando conexão...");
         // Monta o pacote FIN e calcula o CRC32 antes de enviar
         SrtpPacket finPacket = PacketFactory.createFinPacket();
