@@ -1,0 +1,255 @@
+[2026-06-20 18:07:35.604] [main] Iniciando conexão...
+[2026-06-20 18:07:35.613] [main] Enviando pacote SYN...
+[2026-06-20 18:07:35.614] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:35.715] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:35.716] [main] Enviando pacote SYN...
+[2026-06-20 18:07:35.716] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:35.817] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:35.817] [main] Enviando pacote SYN...
+[2026-06-20 18:07:35.818] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:35.918] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:35.918] [main] Enviando pacote SYN...
+[2026-06-20 18:07:35.918] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.019] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.019] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.020] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.121] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.121] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.121] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.223] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.223] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.223] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.324] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.324] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.325] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.426] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.427] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.427] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.529] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-20 18:07:36.529] [main] Enviando pacote SYN...
+[2026-06-20 18:07:36.530] [main] Aguardando pacote SYN+ACK...
+[2026-06-20 18:07:36.536] [main] Enviando pacote ACK final para completar o handshake...
+[2026-06-20 18:07:36.540] [sender-receive-response] START RECEIVE THREAD: port: 6001
+[2026-06-20 18:07:36.541] [sender-file-transfer] START SEND THREAD: host: 192.168.0.101, port: 6000
+[2026-06-20 18:07:36.541] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.543] [sender-file-transfer] Enviando pacote de dados seq=0 tamanho=255
+[2026-06-20 18:07:36.544] [sender-file-transfer] Aguardando ACK do seq=0
+[2026-06-20 18:07:36.553] [sender-receive-response] ACK enviado para seq=0
+[2026-06-20 18:07:36.553] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.557] [sender-receive-response] ACK enviado para seq=1
+[2026-06-20 18:07:36.557] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.561] [sender-receive-response] ACK enviado para seq=2
+[2026-06-20 18:07:36.561] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.564] [sender-receive-response] ACK enviado para seq=3
+[2026-06-20 18:07:36.564] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.567] [sender-receive-response] ACK enviado para seq=4
+[2026-06-20 18:07:36.567] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.571] [sender-receive-response] ACK enviado para seq=5
+[2026-06-20 18:07:36.571] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.574] [sender-receive-response] ACK enviado para seq=6
+[2026-06-20 18:07:36.574] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.578] [sender-receive-response] ACK enviado para seq=7
+[2026-06-20 18:07:36.578] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.581] [sender-receive-response] ACK enviado para seq=8
+[2026-06-20 18:07:36.581] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.585] [sender-receive-response] ACK enviado para seq=9
+[2026-06-20 18:07:36.585] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.588] [sender-receive-response] ACK enviado para seq=10
+[2026-06-20 18:07:36.588] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.592] [sender-receive-response] ACK enviado para seq=11
+[2026-06-20 18:07:36.592] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.594] [sender-receive-response] ACK enviado para seq=12
+[2026-06-20 18:07:36.595] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.598] [sender-receive-response] ACK enviado para seq=13
+[2026-06-20 18:07:36.598] [sender-receive-response] Aguardando pacote de dados...
+[2026-06-20 18:07:36.610] [sender-receive-response] Push da aplicação com 3428 bytes.
+[2026-06-20 18:07:36.610] [sender-receive-response] FINISH RECEIVE THREAD: port: 6001
+[2026-06-20 18:07:36.645] [sender-file-transfer] Timeout ao aguardar ACK do seq=0, reenviando pacote.
+[2026-06-20 18:07:36.645] [sender-file-transfer] Enviando pacote de dados seq=0 tamanho=255
+[2026-06-20 18:07:36.645] [sender-file-transfer] Aguardando ACK do seq=0
+[2026-06-20 18:07:36.649] [sender-file-transfer] ACK recebido para seq=0
+[2026-06-20 18:07:36.649] [sender-file-transfer] Enviando pacote de dados seq=1 tamanho=255
+[2026-06-20 18:07:36.649] [sender-file-transfer] Aguardando ACK do seq=1
+[2026-06-20 18:07:36.750] [sender-file-transfer] Timeout ao aguardar ACK do seq=1, reenviando pacote.
+[2026-06-20 18:07:36.750] [sender-file-transfer] Enviando pacote de dados seq=1 tamanho=255
+[2026-06-20 18:07:36.751] [sender-file-transfer] Aguardando ACK do seq=1
+[2026-06-20 18:07:36.755] [sender-file-transfer] ACK recebido para seq=1
+[2026-06-20 18:07:36.755] [sender-file-transfer] Enviando pacote de dados seq=2 tamanho=255
+[2026-06-20 18:07:36.755] [sender-file-transfer] Aguardando ACK do seq=2
+[2026-06-20 18:07:36.758] [sender-file-transfer] ACK recebido para seq=2
+[2026-06-20 18:07:36.758] [sender-file-transfer] Enviando pacote de dados seq=3 tamanho=255
+[2026-06-20 18:07:36.758] [sender-file-transfer] Aguardando ACK do seq=3
+[2026-06-20 18:07:36.761] [sender-file-transfer] ACK recebido para seq=3
+[2026-06-20 18:07:36.762] [sender-file-transfer] Enviando pacote de dados seq=4 tamanho=255
+[2026-06-20 18:07:36.762] [sender-file-transfer] Aguardando ACK do seq=4
+[2026-06-20 18:07:36.862] [sender-file-transfer] Timeout ao aguardar ACK do seq=4, reenviando pacote.
+[2026-06-20 18:07:36.863] [sender-file-transfer] Enviando pacote de dados seq=4 tamanho=255
+[2026-06-20 18:07:36.863] [sender-file-transfer] Aguardando ACK do seq=4
+[2026-06-20 18:07:36.965] [sender-file-transfer] Timeout ao aguardar ACK do seq=4, reenviando pacote.
+[2026-06-20 18:07:36.965] [sender-file-transfer] Enviando pacote de dados seq=4 tamanho=255
+[2026-06-20 18:07:36.965] [sender-file-transfer] Aguardando ACK do seq=4
+[2026-06-20 18:07:36.970] [sender-file-transfer] ACK recebido para seq=4
+[2026-06-20 18:07:36.970] [sender-file-transfer] Enviando pacote de dados seq=5 tamanho=255
+[2026-06-20 18:07:36.970] [sender-file-transfer] Aguardando ACK do seq=5
+[2026-06-20 18:07:36.973] [sender-file-transfer] ACK recebido para seq=5
+[2026-06-20 18:07:36.974] [sender-file-transfer] Enviando pacote de dados seq=6 tamanho=255
+[2026-06-20 18:07:36.974] [sender-file-transfer] Aguardando ACK do seq=6
+[2026-06-20 18:07:36.977] [sender-file-transfer] ACK recebido para seq=6
+[2026-06-20 18:07:36.977] [sender-file-transfer] Enviando pacote de dados seq=7 tamanho=255
+[2026-06-20 18:07:36.977] [sender-file-transfer] Aguardando ACK do seq=7
+[2026-06-20 18:07:36.981] [sender-file-transfer] ACK recebido para seq=7
+[2026-06-20 18:07:36.981] [sender-file-transfer] Enviando pacote de dados seq=8 tamanho=255
+[2026-06-20 18:07:36.981] [sender-file-transfer] Aguardando ACK do seq=8
+[2026-06-20 18:07:36.986] [sender-file-transfer] ACK recebido para seq=8
+[2026-06-20 18:07:36.986] [sender-file-transfer] Enviando pacote de dados seq=9 tamanho=255
+[2026-06-20 18:07:36.987] [sender-file-transfer] Aguardando ACK do seq=9
+[2026-06-20 18:07:36.990] [sender-file-transfer] ACK recebido para seq=9
+[2026-06-20 18:07:36.991] [sender-file-transfer] Enviando pacote de dados seq=10 tamanho=255
+[2026-06-20 18:07:36.991] [sender-file-transfer] Aguardando ACK do seq=10
+[2026-06-20 18:07:36.995] [sender-file-transfer] ACK recebido para seq=10
+[2026-06-20 18:07:36.995] [sender-file-transfer] Enviando pacote de dados seq=11 tamanho=255
+[2026-06-20 18:07:36.995] [sender-file-transfer] Aguardando ACK do seq=11
+[2026-06-20 18:07:37.000] [sender-file-transfer] ACK recebido para seq=11
+[2026-06-20 18:07:37.000] [sender-file-transfer] Enviando pacote de dados seq=12 tamanho=255
+[2026-06-20 18:07:37.000] [sender-file-transfer] Aguardando ACK do seq=12
+[2026-06-20 18:07:37.004] [sender-file-transfer] ACK recebido para seq=12
+[2026-06-20 18:07:37.004] [sender-file-transfer] Enviando pacote de dados seq=13 tamanho=255
+[2026-06-20 18:07:37.004] [sender-file-transfer] Aguardando ACK do seq=13
+[2026-06-20 18:07:37.104] [sender-file-transfer] Timeout ao aguardar ACK do seq=13, reenviando pacote.
+[2026-06-20 18:07:37.105] [sender-file-transfer] Enviando pacote de dados seq=13 tamanho=255
+[2026-06-20 18:07:37.105] [sender-file-transfer] Aguardando ACK do seq=13
+[2026-06-20 18:07:37.109] [sender-file-transfer] ACK recebido para seq=13
+[2026-06-20 18:07:37.109] [sender-file-transfer] Enviando pacote de dados seq=14 tamanho=255
+[2026-06-20 18:07:37.110] [sender-file-transfer] Aguardando ACK do seq=14
+[2026-06-20 18:07:37.113] [sender-file-transfer] ACK recebido para seq=14
+[2026-06-20 18:07:37.114] [sender-file-transfer] Enviando pacote de dados seq=15 tamanho=255
+[2026-06-20 18:07:37.114] [sender-file-transfer] Aguardando ACK do seq=15
+[2026-06-20 18:07:37.116] [sender-file-transfer] ACK recebido para seq=15
+[2026-06-20 18:07:37.117] [sender-file-transfer] Enviando pacote de dados seq=16 tamanho=255
+[2026-06-20 18:07:37.117] [sender-file-transfer] Aguardando ACK do seq=16
+[2026-06-20 18:07:37.120] [sender-file-transfer] ACK recebido para seq=16
+[2026-06-20 18:07:37.120] [sender-file-transfer] Enviando pacote de dados seq=17 tamanho=255
+[2026-06-20 18:07:37.120] [sender-file-transfer] Aguardando ACK do seq=17
+[2026-06-20 18:07:37.124] [sender-file-transfer] ACK recebido para seq=17
+[2026-06-20 18:07:37.124] [sender-file-transfer] Enviando pacote de dados seq=18 tamanho=255
+[2026-06-20 18:07:37.124] [sender-file-transfer] Aguardando ACK do seq=18
+[2026-06-20 18:07:37.225] [sender-file-transfer] Timeout ao aguardar ACK do seq=18, reenviando pacote.
+[2026-06-20 18:07:37.226] [sender-file-transfer] Enviando pacote de dados seq=18 tamanho=255
+[2026-06-20 18:07:37.226] [sender-file-transfer] Aguardando ACK do seq=18
+[2026-06-20 18:07:37.230] [sender-file-transfer] ACK recebido para seq=18
+[2026-06-20 18:07:37.230] [sender-file-transfer] Enviando pacote de dados seq=19 tamanho=255
+[2026-06-20 18:07:37.231] [sender-file-transfer] Aguardando ACK do seq=19
+[2026-06-20 18:07:37.234] [sender-file-transfer] ACK recebido para seq=19
+[2026-06-20 18:07:37.234] [sender-file-transfer] Enviando pacote de dados seq=20 tamanho=255
+[2026-06-20 18:07:37.234] [sender-file-transfer] Aguardando ACK do seq=20
+[2026-06-20 18:07:37.237] [sender-file-transfer] ACK recebido para seq=20
+[2026-06-20 18:07:37.237] [sender-file-transfer] Enviando pacote de dados seq=21 tamanho=255
+[2026-06-20 18:07:37.238] [sender-file-transfer] Aguardando ACK do seq=21
+[2026-06-20 18:07:37.241] [sender-file-transfer] ACK recebido para seq=21
+[2026-06-20 18:07:37.241] [sender-file-transfer] Enviando pacote de dados seq=22 tamanho=255
+[2026-06-20 18:07:37.241] [sender-file-transfer] Aguardando ACK do seq=22
+[2026-06-20 18:07:37.342] [sender-file-transfer] Timeout ao aguardar ACK do seq=22, reenviando pacote.
+[2026-06-20 18:07:37.343] [sender-file-transfer] Enviando pacote de dados seq=22 tamanho=255
+[2026-06-20 18:07:37.343] [sender-file-transfer] Aguardando ACK do seq=22
+[2026-06-20 18:07:37.445] [sender-file-transfer] Timeout ao aguardar ACK do seq=22, reenviando pacote.
+[2026-06-20 18:07:37.445] [sender-file-transfer] Enviando pacote de dados seq=22 tamanho=255
+[2026-06-20 18:07:37.446] [sender-file-transfer] Aguardando ACK do seq=22
+[2026-06-20 18:07:37.449] [sender-file-transfer] ACK recebido para seq=22
+[2026-06-20 18:07:37.449] [sender-file-transfer] Enviando pacote de dados seq=23 tamanho=255
+[2026-06-20 18:07:37.450] [sender-file-transfer] Aguardando ACK do seq=23
+[2026-06-20 18:07:37.452] [sender-file-transfer] ACK recebido para seq=23
+[2026-06-20 18:07:37.453] [sender-file-transfer] Enviando pacote de dados seq=24 tamanho=255
+[2026-06-20 18:07:37.453] [sender-file-transfer] Aguardando ACK do seq=24
+[2026-06-20 18:07:37.457] [sender-file-transfer] ACK recebido para seq=24
+[2026-06-20 18:07:37.457] [sender-file-transfer] Enviando pacote de dados seq=25 tamanho=255
+[2026-06-20 18:07:37.457] [sender-file-transfer] Aguardando ACK do seq=25
+[2026-06-20 18:07:37.460] [sender-file-transfer] ACK recebido para seq=25
+[2026-06-20 18:07:37.460] [sender-file-transfer] Enviando pacote de dados seq=26 tamanho=255
+[2026-06-20 18:07:37.460] [sender-file-transfer] Aguardando ACK do seq=26
+[2026-06-20 18:07:37.463] [sender-file-transfer] ACK recebido para seq=26
+[2026-06-20 18:07:37.463] [sender-file-transfer] Enviando pacote de dados seq=27 tamanho=255
+[2026-06-20 18:07:37.463] [sender-file-transfer] Aguardando ACK do seq=27
+[2026-06-20 18:07:37.466] [sender-file-transfer] ACK recebido para seq=27
+[2026-06-20 18:07:37.466] [sender-file-transfer] Enviando pacote de dados seq=28 tamanho=255
+[2026-06-20 18:07:37.466] [sender-file-transfer] Aguardando ACK do seq=28
+[2026-06-20 18:07:37.469] [sender-file-transfer] ACK recebido para seq=28
+[2026-06-20 18:07:37.469] [sender-file-transfer] Enviando pacote de dados seq=29 tamanho=255
+[2026-06-20 18:07:37.469] [sender-file-transfer] Aguardando ACK do seq=29
+[2026-06-20 18:07:37.472] [sender-file-transfer] ACK recebido para seq=29
+[2026-06-20 18:07:37.472] [sender-file-transfer] Enviando pacote de dados seq=30 tamanho=255
+[2026-06-20 18:07:37.472] [sender-file-transfer] Aguardando ACK do seq=30
+[2026-06-20 18:07:37.475] [sender-file-transfer] ACK recebido para seq=30
+[2026-06-20 18:07:37.475] [sender-file-transfer] Enviando pacote de dados seq=31 tamanho=255
+[2026-06-20 18:07:37.475] [sender-file-transfer] Aguardando ACK do seq=31
+[2026-06-20 18:07:37.479] [sender-file-transfer] ACK recebido para seq=31
+[2026-06-20 18:07:37.479] [sender-file-transfer] Enviando pacote de dados seq=32 tamanho=255
+[2026-06-20 18:07:37.479] [sender-file-transfer] Aguardando ACK do seq=32
+[2026-06-20 18:07:37.482] [sender-file-transfer] ACK recebido para seq=32
+[2026-06-20 18:07:37.482] [sender-file-transfer] Enviando pacote de dados seq=33 tamanho=255
+[2026-06-20 18:07:37.482] [sender-file-transfer] Aguardando ACK do seq=33
+[2026-06-20 18:07:37.485] [sender-file-transfer] ACK recebido para seq=33
+[2026-06-20 18:07:37.486] [sender-file-transfer] Enviando pacote de dados seq=34 tamanho=255
+[2026-06-20 18:07:37.486] [sender-file-transfer] Aguardando ACK do seq=34
+[2026-06-20 18:07:37.489] [sender-file-transfer] ACK recebido para seq=34
+[2026-06-20 18:07:37.489] [sender-file-transfer] Enviando pacote de dados seq=35 tamanho=255
+[2026-06-20 18:07:37.489] [sender-file-transfer] Aguardando ACK do seq=35
+[2026-06-20 18:07:37.492] [sender-file-transfer] ACK recebido para seq=35
+[2026-06-20 18:07:37.492] [sender-file-transfer] Enviando pacote de dados seq=36 tamanho=255
+[2026-06-20 18:07:37.492] [sender-file-transfer] Aguardando ACK do seq=36
+[2026-06-20 18:07:37.498] [sender-file-transfer] ACK recebido para seq=36
+[2026-06-20 18:07:37.498] [sender-file-transfer] Enviando pacote de dados seq=37 tamanho=255
+[2026-06-20 18:07:37.498] [sender-file-transfer] Aguardando ACK do seq=37
+[2026-06-20 18:07:37.501] [sender-file-transfer] ACK recebido para seq=37
+[2026-06-20 18:07:37.501] [sender-file-transfer] Enviando pacote de dados seq=38 tamanho=255
+[2026-06-20 18:07:37.501] [sender-file-transfer] Aguardando ACK do seq=38
+[2026-06-20 18:07:37.504] [sender-file-transfer] ACK recebido para seq=38
+[2026-06-20 18:07:37.504] [sender-file-transfer] Enviando pacote de dados seq=39 tamanho=255
+[2026-06-20 18:07:37.505] [sender-file-transfer] Aguardando ACK do seq=39
+[2026-06-20 18:07:37.508] [sender-file-transfer] ACK recebido para seq=39
+[2026-06-20 18:07:37.508] [sender-file-transfer] Enviando pacote de dados seq=40 tamanho=255
+[2026-06-20 18:07:37.509] [sender-file-transfer] Aguardando ACK do seq=40
+[2026-06-20 18:07:37.511] [sender-file-transfer] ACK recebido para seq=40
+[2026-06-20 18:07:37.511] [sender-file-transfer] Enviando pacote de dados seq=41 tamanho=255
+[2026-06-20 18:07:37.512] [sender-file-transfer] Aguardando ACK do seq=41
+[2026-06-20 18:07:37.514] [sender-file-transfer] ACK recebido para seq=41
+[2026-06-20 18:07:37.514] [sender-file-transfer] Enviando pacote de dados seq=42 tamanho=255
+[2026-06-20 18:07:37.515] [sender-file-transfer] Aguardando ACK do seq=42
+[2026-06-20 18:07:37.518] [sender-file-transfer] ACK recebido para seq=42
+[2026-06-20 18:07:37.518] [sender-file-transfer] Enviando pacote de dados seq=43 tamanho=255
+[2026-06-20 18:07:37.518] [sender-file-transfer] Aguardando ACK do seq=43
+[2026-06-20 18:07:37.521] [sender-file-transfer] ACK recebido para seq=43
+[2026-06-20 18:07:37.521] [sender-file-transfer] Enviando pacote de dados seq=44 tamanho=255
+[2026-06-20 18:07:37.521] [sender-file-transfer] Aguardando ACK do seq=44
+[2026-06-20 18:07:37.524] [sender-file-transfer] ACK recebido para seq=44
+[2026-06-20 18:07:37.525] [sender-file-transfer] Enviando pacote de dados seq=45 tamanho=255
+[2026-06-20 18:07:37.525] [sender-file-transfer] Aguardando ACK do seq=45
+[2026-06-20 18:07:37.528] [sender-file-transfer] ACK recebido para seq=45
+[2026-06-20 18:07:37.528] [sender-file-transfer] Enviando pacote de dados seq=46 tamanho=255
+[2026-06-20 18:07:37.528] [sender-file-transfer] Aguardando ACK do seq=46
+[2026-06-20 18:07:37.531] [sender-file-transfer] ACK recebido para seq=46
+[2026-06-20 18:07:37.532] [sender-file-transfer] Enviando pacote de dados seq=47 tamanho=255
+[2026-06-20 18:07:37.532] [sender-file-transfer] Aguardando ACK do seq=47
+[2026-06-20 18:07:37.534] [sender-file-transfer] ACK recebido para seq=47
+[2026-06-20 18:07:37.534] [sender-file-transfer] Enviando pacote de dados seq=48 tamanho=255
+[2026-06-20 18:07:37.535] [sender-file-transfer] Aguardando ACK do seq=48
+[2026-06-20 18:07:37.537] [sender-file-transfer] ACK recebido para seq=48
+[2026-06-20 18:07:37.537] [sender-file-transfer] Enviando pacote de dados seq=49 tamanho=255
+[2026-06-20 18:07:37.537] [sender-file-transfer] Aguardando ACK do seq=49
+[2026-06-20 18:07:37.540] [sender-file-transfer] ACK recebido para seq=49
+[2026-06-20 18:07:37.540] [sender-file-transfer] Enviando pacote de dados seq=50 tamanho=255
+[2026-06-20 18:07:37.540] [sender-file-transfer] Aguardando ACK do seq=50
+[2026-06-20 18:07:37.543] [sender-file-transfer] ACK recebido para seq=50
+[2026-06-20 18:07:37.543] [sender-file-transfer] Enviando pacote de dados seq=51 tamanho=255
+[2026-06-20 18:07:37.543] [sender-file-transfer] Aguardando ACK do seq=51
+[2026-06-20 18:07:37.546] [sender-file-transfer] ACK recebido para seq=51
+[2026-06-20 18:07:37.546] [sender-file-transfer] Enviando pacote de dados seq=52 tamanho=255
+[2026-06-20 18:07:37.547] [sender-file-transfer] Aguardando ACK do seq=52
+[2026-06-20 18:07:37.549] [sender-file-transfer] ACK recebido para seq=52
+[2026-06-20 18:07:37.549] [sender-file-transfer] Enviando pacote de dados seq=53 tamanho=40
+[2026-06-20 18:07:37.549] [sender-file-transfer] Aguardando ACK do seq=53
+[2026-06-20 18:07:37.552] [sender-file-transfer] ACK recebido para seq=53
+[2026-06-20 18:07:37.556] [sender-file-transfer] Envio concluído em 1011 ms.
+[2026-06-20 18:07:37.556] [sender-file-transfer] FINISH SEND THREAD: host: 192.168.0.101, port: 6000
+[2026-06-20 18:07:37.556] [main] Encerrando conexão...
+[2026-06-20 18:07:37.557] [main] Enviando pacote FIN...
+[2026-06-20 18:07:37.557] [main] Aguardando pacote FIN+ACK...
