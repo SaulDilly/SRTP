@@ -1,9 +1,12 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public final class Log {
     private static BufferedWriter writer;
+    private static final DateTimeFormatter TIMESTAMP_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
     public static void initSender() throws IOException {
         initialize("LogSender.txt");
@@ -19,7 +22,7 @@ public final class Log {
         }
 
         try {
-            writer.write(line);
+            writer.write(formatLine(line));
             writer.newLine();
             writer.flush();
         } catch (IOException exception) {
@@ -43,5 +46,11 @@ public final class Log {
     private static synchronized void initialize(String fileName) throws IOException {
         close();
         writer = new BufferedWriter(new FileWriter(fileName, false));
+    }
+
+    private static String formatLine(String line) {
+        String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMAT);
+        String threadName = Thread.currentThread().getName();
+        return "[" + timestamp + "] [" + threadName + "] " + line;
     }
 }

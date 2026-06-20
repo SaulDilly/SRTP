@@ -27,10 +27,12 @@ public class Srtp {
             sender.establishConnection(parser.getHost(), parser.getPort());
             // Inicia envio a partir da porta 6000
             Thread sendThread = new Thread(new SendFileTask(sender, parser.getHost(), parser.getPort(), parser.getFilePath()));
+            sendThread.setName("sender-file-transfer");
             sendThread.start();
             // Inicia a thread de recebimento na porta 6001 para receber o arquivo resposta
             SAWReceiver receiver = new SAWReceiver();
             Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort() + 1));
+            receiveThread.setName("sender-receive-response");
             receiveThread.start();
             sendThread.join();
             // Finaliza a conexão
@@ -52,10 +54,12 @@ public class Srtp {
             String host = receiver.listenConnection(parser.getPort());
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
             Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort()));
+            receiveThread.setName("receiver-file-transfer");
             receiveThread.start();
             // Inicia envio a partir da porta 6001 para enviar o arquivo resposta
             SAWSender sender = new SAWSender();
             Thread sendThread = new Thread(new SendFileTask(sender, host, parser.getPort() + 1, "envio_resposta.txt"));
+            sendThread.setName("receiver-send-response");
             sendThread.start();
             sendThread.join();
             // Finaliza a conexão
