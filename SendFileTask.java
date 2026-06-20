@@ -14,7 +14,9 @@ public class SendFileTask implements Runnable {
     @Override
     public void run() {
         try {
+            Log.writeLine("START SEND THREAD: host: " + host + ", port: " + port);
             sender.sendFile(host, port, filePath);
+            Log.writeLine("FINISH SEND THREAD: host: " + host + ", port: " + port);
         } catch (Exception e) {
             System.err.println("Erro ao enviar o arquivo: " + e.getMessage());
         }

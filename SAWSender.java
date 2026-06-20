@@ -25,7 +25,7 @@ public class SAWSender {
         synPacket.calculateCrc32();
         byte[] packetBytes = synPacket.toBytes();
 
-        try (DatagramSocket socket = new DatagramSocket()) {
+        try (DatagramSocket socket = new DatagramSocket(port)) {
             // Monta o datagrama com base no pacote convertido para bytes
             socket.setSoTimeout(TIMEOUT);
             InetAddress address = InetAddress.getByName(host);
@@ -85,7 +85,7 @@ public class SAWSender {
         boolean sentAnyData = false;
         boolean lastChunkWasFull = false;
 
-        try (DatagramSocket socket = new DatagramSocket();
+        try (DatagramSocket socket = new DatagramSocket(port);
              FileInputStream inputStream = new FileInputStream(filePath)) {
 
             socket.setSoTimeout(TIMEOUT);
@@ -192,14 +192,14 @@ public class SAWSender {
     /*
      * Encerra a conexão, enviando FIN e aguardando FIN+ACK
      */
-    public void endConnection(String host,int port) {
+    public void endConnection(String host, int port) {
         Log.writeLine("Encerrando conexão...");
         // Monta o pacote FIN e calcula o CRC32 antes de enviar
         SrtpPacket finPacket = PacketFactory.createFinPacket();
         finPacket.calculateCrc32();
         byte[] packetBytes = finPacket.toBytes();
 
-        try (DatagramSocket socket = new DatagramSocket()) {
+        try (DatagramSocket socket = new DatagramSocket(port)) {
             // Monta o datagrama com base no pacote convertido para bytes
             socket.setSoTimeout(TIMEOUT);
             InetAddress address = InetAddress.getByName(host);
