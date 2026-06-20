@@ -33,9 +33,9 @@ public class Srtp {
             Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort() + 1));
             receiveThread.start();
             sendThread.join();
-            receiveThread.join();
             // Finaliza a conexão
             sender.endConnection(parser.getHost(), parser.getPort());
+            receiveThread.join();
         } finally {
             Log.close();
         }
@@ -57,10 +57,10 @@ public class Srtp {
             SAWSender sender = new SAWSender();
             Thread sendThread = new Thread(new SendFileTask(sender, host, parser.getPort() + 1, "envio_resposta.txt"));
             sendThread.start();
-            receiveThread.join();
             sendThread.join();
             // Finaliza a conexão
             sender.endConnection(host, parser.getPort() + 1);
+            receiveThread.join();
         } finally {
             Log.close();
         }
