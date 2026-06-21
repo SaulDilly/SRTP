@@ -30,12 +30,12 @@ public class Srtp {
                                                             parser.getHost(), 
                                                             parser.getPort(), 
                                                             parser.getFilePath()));
-            sendThread.setName("sender-file-transfer");
+            sendThread.setName("Port " + parser.getPort());
             sendThread.start();
             // Inicia a thread de recebimento na porta 6001 para receber o arquivo resposta
             Thread receiveThread = new Thread(new ReceiveFileTask(ModeFactory.createReceiver(parser.getMode(), ch.getHandshakeLength()), 
                                                                   parser.getPort() + 1));
-            receiveThread.setName("sender-receive-response");
+            receiveThread.setName("Port " + (parser.getPort() + 1));
             receiveThread.start();
             sendThread.join();
             // Finaliza a conexão
@@ -58,14 +58,14 @@ public class Srtp {
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
             Thread receiveThread = new Thread(new ReceiveFileTask(ModeFactory.createReceiver(parser.getMode(), ch.getHandshakeLength()), 
                                                                   parser.getPort()));
-            receiveThread.setName("receiver-file-transfer");
+            receiveThread.setName("Port " + parser.getPort());
             receiveThread.start();
             // Inicia envio a partir da porta 6001 para enviar o arquivo resposta
             Thread sendThread = new Thread(new SendFileTask(ModeFactory.createSender(parser.getMode(), ch.getHandshakeLength()), 
                                                             host, 
                                                             parser.getPort() + 1,
                                                              "envio_resposta.txt"));
-            sendThread.setName("receiver-send-response");
+            sendThread.setName("Port " + (parser.getPort() + 1));
             sendThread.start();
             sendThread.join();
             // Finaliza a conexão na porta 6001
