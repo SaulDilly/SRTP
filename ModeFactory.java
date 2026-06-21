@@ -6,6 +6,8 @@ public class ModeFactory {
         switch (mode.toLowerCase()) {
             case "gbn":
                 return new GBNSender(windowLength);
+            case "sr":
+                return new SRSender(windowLength);
             default:
                 return new SAWSender();
         }
@@ -18,6 +20,8 @@ public class ModeFactory {
         switch (mode.toLowerCase()) {
             case "gbn":
                 return new GBNReceiver(windowLength);
+            case "sr":
+                return new SRReceiver(windowLength);
             default:
                 return new SAWReceiver();
         }
