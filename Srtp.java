@@ -24,7 +24,7 @@ public class Srtp {
         try {
             // Estabele conexão na porta 6000 com o receiver
             ConnectionHandler ch = new ConnectionHandler();
-            ch.establishConnection(parser.getHost(), parser.getPort(), 10);
+            ch.establishConnection(parser.getHost(), parser.getPort(), 16);
             // Inicia envio a partir da porta 6000
             Thread sendThread = new Thread(new SendFileTask(ModeFactory.createSender(parser.getMode(), ch.getHandshakeLength()), 
                                                             parser.getHost(), 
@@ -54,7 +54,7 @@ public class Srtp {
         try {
             // Estabele conexão na porta 6000 com o sender
             ConnectionHandler ch = new ConnectionHandler();
-            String host = ch.listenConnection(parser.getPort(), 8);
+            String host = ch.listenConnection(parser.getPort(), 4);
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
             Thread receiveThread = new Thread(new ReceiveFileTask(ModeFactory.createReceiver(parser.getMode(), ch.getHandshakeLength()), 
                                                                   parser.getPort()));
