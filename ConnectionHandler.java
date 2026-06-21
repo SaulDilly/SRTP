@@ -23,8 +23,8 @@ public class ConnectionHandler {
         Log.writeLine("Iniciando conexão...");
         // Monta o pacote SYN e calcula o CRC32 antes de enviar
         SrtpPacket synPacket = PacketFactory.createSynPacket(0);
-        synPacket.calculateCrc32();
         synPacket.setLength(lengthHandshake);
+        synPacket.calculateCrc32();
         byte[] packetBytes = synPacket.toBytes();
 
         try (DatagramSocket socket = new DatagramSocket(port)) {
