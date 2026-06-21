@@ -60,7 +60,7 @@ public class GBNReceiver implements ReceiverInterface {
                     SrtpPacket dataPacket = SrtpPacket.fromBytes(Arrays.copyOf(dataDatagram.getData(), dataDatagram.getLength()));
                     
                     // Valida CRC (regras de erro)
-                    if (dataPacket == null || dataPacket.isSyn() || dataPacket.isAck() || dataPacket.isNack()) {
+                    if (dataPacket == null || dataPacket.isSyn() || (dataPacket.isAck() && dataPacket.isNack())) {
                         Log.writeLine("Pacote corrompido ou com CRC inválido recebido no lote.");
                         sendNack = true;
                         break; // Quebra o for para parar de ler a janela e enviar o NACK

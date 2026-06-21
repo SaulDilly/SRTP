@@ -84,7 +84,7 @@ public class GBNSender implements SenderInterface {
                 while (true) {
                     for (int i = 0; i < packetsInWindow; i++) {
                         if (windowData[i] != null) {
-                            Log.writeLine("Enviando pacote seq=" + seq);
+                            Log.writeLine("Enviando pacote seq=" + window[i].getSeq());
                             socket.send(new DatagramPacket(windowData[i], windowData[i].length, address, port));
                         }
                     }
