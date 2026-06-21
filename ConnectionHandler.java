@@ -10,14 +10,21 @@ public class ConnectionHandler {
     private static final int MAX_PAYLOAD = 255;
     private static final int HEADER_SIZE = 9;
 
+    private int length;
+
+    public ConnectionHandler() {
+        length = 0;
+    }
+
     /*
      * Estabelece a conexão com o host especificado, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
-    public static void establishConnection(String host, int port) {
+    public void establishConnection(String host, int port, int lengthHandshake) {
         Log.writeLine("Iniciando conexão...");
         // Monta o pacote SYN e calcula o CRC32 antes de enviar
         SrtpPacket synPacket = PacketFactory.createSynPacket(0);
         synPacket.calculateCrc32();
+        synPacket.setLength(lengthHandshake);
         byte[] packetBytes = synPacket.toBytes();
 
         try (DatagramSocket socket = new DatagramSocket(port)) {
@@ -43,6 +50,8 @@ public class ConnectionHandler {
                     SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
                     // Se é um pacote válido e é um SYN+ACK, sai do loop
                     if (responsePacket != null && responsePacket.isSyn() && responsePacket.isAck()) {
+                        // Acorda length negociado com o receiver, que pode ser menor que o máximo permitido
+                        this.length = Math.min(lengthHandshake, responsePacket.getLength());
                         break;
                     }
                     Log.writeLine("Não recebi um pacote válido.");
@@ -66,7 +75,7 @@ public class ConnectionHandler {
     /*
      * Encerra a conexão, enviando FIN e aguardando FIN+ACK
      */
-    public static void endConnection(String host, int port) {
+    public void endConnection(String host, int port) {
         Log.writeLine("Encerrando conexão...");
         // Monta o pacote FIN e calcula o CRC32 antes de enviar
         SrtpPacket finPacket = PacketFactory.createFinPacket();
@@ -112,7 +121,7 @@ public class ConnectionHandler {
     /*
      * Escuta conexões de entrada na porta especificada, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
      */ 
-    public static String listenConnection(int port) {
+    public String listenConnection(int port, int lengthHandshake) {
         try (DatagramSocket socket = new DatagramSocket(port)) {
             socket.setSoTimeout(TIMEOUT);
             byte[] receiveBuffer = new byte[HEADER_SIZE + MAX_PAYLOAD];
@@ -130,8 +139,12 @@ public class ConnectionHandler {
                     continue;
                 }
 
+                // Envia já o mínimo entre os dois
+                this.length = Math.min(lengthHandshake, synPacket.getLength());
+
                 // Cria o pacote SYN+ACK, calcula o CRC32 e monta o datagrama para resposta
                 SrtpPacket synAckPacket = PacketFactory.createSynAckPacket(MAX_PAYLOAD);
+                synAckPacket.setLength(length);
                 synAckPacket.calculateCrc32();
                 byte[] synAckBytes = synAckPacket.toBytes();
                 // Determina o endereço de envio do SYN+ACK com base no pacote recebido
@@ -178,10 +191,17 @@ public class ConnectionHandler {
     /* 
      * Verifica se o pacote recebido é um pacote de início de transmissão, ou seja, não é SYN, ACK ou NACK
      */
-    private static boolean isDataStartPacket(SrtpPacket packet) {
+    private boolean isDataStartPacket(SrtpPacket packet) {
         return packet != null
                 && !packet.isSyn()
                 && !packet.isAck()
                 && !packet.isNack();
+    }
+
+    /* 
+     * Retorna tamanho da janela negociada durante o handshake, ou 0 se o handshake não foi realizado
+     */
+    public int getHandshakeLength() {
+        return length;
     }
 }

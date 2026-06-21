@@ -23,7 +23,8 @@ public class Srtp {
         Log.initSender();
         try {
             // Estabele conexão na porta 6000 com o receiver
-            ConnectionHandler.establishConnection(parser.getHost(), parser.getPort());
+            ConnectionHandler ch = new ConnectionHandler();
+            ch.establishConnection(parser.getHost(), parser.getPort(), 10);
             // Inicia envio a partir da porta 6000
             Thread sendThread = new Thread(new SendFileTask(new SAWSender(), parser.getHost(), parser.getPort(), parser.getFilePath()));
             sendThread.setName("sender-file-transfer");
@@ -35,7 +36,7 @@ public class Srtp {
             receiveThread.start();
             sendThread.join();
             // Finaliza a conexão
-            ConnectionHandler.endConnection(parser.getHost(), parser.getPort());
+            ch.endConnection(parser.getHost(), parser.getPort());
             receiveThread.join();
         } finally {
             Log.close();
@@ -49,7 +50,8 @@ public class Srtp {
         Log.initReceiver();
         try {
             // Estabele conexão na porta 6000 com o sender
-            String host = ConnectionHandler.listenConnection(parser.getPort());
+            ConnectionHandler ch = new ConnectionHandler();
+            String host = ch.listenConnection(parser.getPort(), 8);
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
             Thread receiveThread = new Thread(new ReceiveFileTask(new SAWReceiver(), parser.getPort()));
             receiveThread.setName("receiver-file-transfer");
@@ -61,7 +63,7 @@ public class Srtp {
             sendThread.start();
             sendThread.join();
             // Finaliza a conexão na porta 6001
-            ConnectionHandler.endConnection(host, parser.getPort() + 1);
+            ch.endConnection(host, parser.getPort() + 1);
             receiveThread.join();
         } finally {
             Log.close();
