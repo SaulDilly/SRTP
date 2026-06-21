@@ -102,7 +102,7 @@ public class GBNSender implements SenderInterface {
                         SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(ackDatagram.getData(), ackDatagram.getLength()));
                         
                         // Se estiver corrompido, realiza o envio inteiro da janela novamente
-                        if (responsePacket == null || (responsePacket.isAck() && responsePacket.isNack())) {
+                        if (responsePacket == null || (!responsePacket.isAck() && !responsePacket.isNack())) {
                             Log.writeLine("ACK com CRC inválido. Reenviando janela.");
                             continue;
                         }

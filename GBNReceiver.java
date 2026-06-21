@@ -37,7 +37,7 @@ public class GBNReceiver implements ReceiverInterface {
         byte[] receiveBuffer = new byte[HEADER_SIZE + MAX_PAYLOAD];
         
         // Em GBN, o receiver começa esperando estritamente a sequência 0
-        int expectedSeq = 0; 
+        int expectedSeq = 0;
 
         Log.writeLine("Aguardando conexões (Janela = " + windowLength + " pacotes)...");
 
@@ -60,7 +60,7 @@ public class GBNReceiver implements ReceiverInterface {
                     SrtpPacket dataPacket = SrtpPacket.fromBytes(Arrays.copyOf(dataDatagram.getData(), dataDatagram.getLength()));
                     
                     // Valida CRC (regras de erro)
-                    if (dataPacket == null || (dataPacket.isAck() && dataPacket.isNack())) {
+                    if (dataPacket == null) {
                         Log.writeLine("Pacote corrompido ou com CRC inválido recebido no lote.");
                         sendNack = true;
                         break; // Quebra o for para parar de ler a janela e enviar o NACK
@@ -138,14 +138,6 @@ public class GBNReceiver implements ReceiverInterface {
                     byte[] ackBytes = ackPacket.toBytes();
                     socket.send(new DatagramPacket(ackBytes, ackBytes.length, senderAddress, senderPort));
                     
-                } else {
-                    // Acordou da espera e todos os pacotes foram duplicados/ignorados
-                    // Reenvia o ACK do último pacote conhecido para ajudar o sender a se localizar
-                    int ackSeqToSend = (expectedSeq - 1) & SEQ_MASK;
-                    SrtpPacket ackPacket = PacketFactory.createAckPacket(ackSeqToSend);
-                    ackPacket.calculateCrc32();
-                    byte[] ackBytes = ackPacket.toBytes();
-                    socket.send(new DatagramPacket(ackBytes, ackBytes.length, senderAddress, senderPort));
                 }
             }
         }
