@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class GBNSender implements SenderInterface {
     
     private static final int SEQ_MASK = 0x3FFF;
-    private static final int TIMEOUT = 100;
+    private static final int TIMEOUT = 110;
     private int seq;
     private SrtpPacket[] window;
     private byte[][] windowData;
@@ -102,7 +102,7 @@ public class GBNSender implements SenderInterface {
                         SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(ackDatagram.getData(), ackDatagram.getLength()));
                         
                         // Se estiver corrompido, realiza o envio inteiro da janela novamente
-                        if (responsePacket == null || (!responsePacket.isAck() && !responsePacket.isNack())) {
+                        if (responsePacket == null || responsePacket.isSyn() || (!responsePacket.isAck() && !responsePacket.isNack())) {
                             Log.writeLine("ACK com CRC inválido. Reenviando janela.");
                             continue;
                         }
