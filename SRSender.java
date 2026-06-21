@@ -34,7 +34,7 @@ public class SRSender implements SenderInterface {
 
         long startTimeNanos = System.nanoTime();
 
-        try (DatagramSocket socket = new DatagramSocket(); 
+        try (DatagramSocket socket = new DatagramSocket(port); 
 
             FileInputStream inputStream = new FileInputStream(filePath)) {
             InetAddress address = InetAddress.getByName(host);
