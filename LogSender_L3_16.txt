@@ -1,0 +1,321 @@
+[2026-06-21 16:49:26.151] [main] Iniciando conexão...
+[2026-06-21 16:49:26.162] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.162] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.263] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.264] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.264] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.365] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.365] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.366] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.467] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.467] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.468] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.569] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.569] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.570] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.671] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.671] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.671] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.773] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.773] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.774] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.874] [main] Ocorreu timeout ao aguardar o SYN+ACK.
+[2026-06-21 16:49:26.875] [main] Enviando pacote SYN...
+[2026-06-21 16:49:26.875] [main] Aguardando pacote SYN+ACK...
+[2026-06-21 16:49:26.946] [main] Enviando pacote ACK final para completar o handshake...
+[2026-06-21 16:49:26.952] [Port 6001] START RECEIVE THREAD: port: 6001
+[2026-06-21 16:49:26.953] [Port 6000] START SEND THREAD: host: 192.168.0.101, port: 6000
+[2026-06-21 16:49:26.953] [Port 6001] Aguardando conexões SR (Janela = 16 pacotes)...
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=0
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=1
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=2
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=3
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=4
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=5
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=6
+[2026-06-21 16:49:26.954] [Port 6000] Enviando pacote seq=7
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=8
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=9
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=10
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=11
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=12
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=13
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=14
+[2026-06-21 16:49:26.955] [Port 6000] Enviando pacote seq=15
+[2026-06-21 16:49:27.142] [Port 6001] Pacote aceito na janela (seq=0). Enviando ACK individual.
+[2026-06-21 16:49:27.143] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.143] [Port 6001] Pacote aceito na janela (seq=1). Enviando ACK individual.
+[2026-06-21 16:49:27.143] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.143] [Port 6001] Pacote aceito na janela (seq=2). Enviando ACK individual.
+[2026-06-21 16:49:27.143] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.143] [Port 6001] Pacote aceito na janela (seq=3). Enviando ACK individual.
+[2026-06-21 16:49:27.143] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.143] [Port 6001] Pacote aceito na janela (seq=4). Enviando ACK individual.
+[2026-06-21 16:49:27.143] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.144] [Port 6001] Pacote aceito na janela (seq=5). Enviando ACK individual.
+[2026-06-21 16:49:27.144] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.144] [Port 6001] Pacote aceito na janela (seq=6). Enviando ACK individual.
+[2026-06-21 16:49:27.144] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.145] [Port 6001] Pacote aceito na janela (seq=7). Enviando ACK individual.
+[2026-06-21 16:49:27.145] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=8). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=9). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=10). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=11). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=12). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.146] [Port 6001] Pacote aceito na janela (seq=13). Enviando ACK individual.
+[2026-06-21 16:49:27.146] [Port 6001] Base completada. Deslizando a janela do receptor em 1 pacote(s).
+[2026-06-21 16:49:27.159] [Port 6001] FIN recebido. Push da aplicação com 3428 bytes.
+[2026-06-21 16:49:27.159] [Port 6001] FINISH RECEIVE THREAD: port: 6001
+[2026-06-21 16:49:27.325] [Port 6000] Enviando pacote seq=0
+[2026-06-21 16:49:27.325] [Port 6000] Enviando pacote seq=1
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=2
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=3
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=4
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=5
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=6
+[2026-06-21 16:49:27.326] [Port 6000] Enviando pacote seq=7
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=8
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=9
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=10
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=11
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=12
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=13
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=14
+[2026-06-21 16:49:27.327] [Port 6000] Enviando pacote seq=15
+[2026-06-21 16:49:27.429] [Port 6000] Enviando pacote seq=0
+[2026-06-21 16:49:27.430] [Port 6000] Enviando pacote seq=1
+[2026-06-21 16:49:27.430] [Port 6000] Enviando pacote seq=2
+[2026-06-21 16:49:27.430] [Port 6000] Enviando pacote seq=3
+[2026-06-21 16:49:27.430] [Port 6000] Enviando pacote seq=4
+[2026-06-21 16:49:27.430] [Port 6000] Enviando pacote seq=5
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=6
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=7
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=8
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=9
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=10
+[2026-06-21 16:49:27.431] [Port 6000] Enviando pacote seq=11
+[2026-06-21 16:49:27.432] [Port 6000] Enviando pacote seq=12
+[2026-06-21 16:49:27.432] [Port 6000] Enviando pacote seq=13
+[2026-06-21 16:49:27.432] [Port 6000] Enviando pacote seq=14
+[2026-06-21 16:49:27.432] [Port 6000] Enviando pacote seq=15
+[2026-06-21 16:49:27.533] [Port 6000] Enviando pacote seq=0
+[2026-06-21 16:49:27.534] [Port 6000] Enviando pacote seq=1
+[2026-06-21 16:49:27.534] [Port 6000] Enviando pacote seq=2
+[2026-06-21 16:49:27.535] [Port 6000] Enviando pacote seq=3
+[2026-06-21 16:49:27.535] [Port 6000] Enviando pacote seq=4
+[2026-06-21 16:49:27.535] [Port 6000] Enviando pacote seq=5
+[2026-06-21 16:49:27.535] [Port 6000] Enviando pacote seq=6
+[2026-06-21 16:49:27.535] [Port 6000] Enviando pacote seq=7
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=8
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=9
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=10
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=11
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=12
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=13
+[2026-06-21 16:49:27.536] [Port 6000] Enviando pacote seq=14
+[2026-06-21 16:49:27.537] [Port 6000] Enviando pacote seq=15
+[2026-06-21 16:49:27.637] [Port 6000] Enviando pacote seq=0
+[2026-06-21 16:49:27.638] [Port 6000] Enviando pacote seq=1
+[2026-06-21 16:49:27.638] [Port 6000] Enviando pacote seq=2
+[2026-06-21 16:49:27.638] [Port 6000] Enviando pacote seq=3
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=4
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=5
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=6
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=7
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=8
+[2026-06-21 16:49:27.639] [Port 6000] Enviando pacote seq=9
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=10
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=11
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=12
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=13
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=14
+[2026-06-21 16:49:27.640] [Port 6000] Enviando pacote seq=15
+[2026-06-21 16:49:27.692] [Port 6000] ACK individual recebido para seq=0
+[2026-06-21 16:49:27.692] [Port 6000] ACK individual recebido para seq=1
+[2026-06-21 16:49:27.692] [Port 6000] ACK individual recebido para seq=2
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=3
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=4
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=5
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=6
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=7
+[2026-06-21 16:49:27.694] [Port 6000] ACK individual recebido para seq=8
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=9
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=10
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=11
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=12
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=13
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=14
+[2026-06-21 16:49:27.695] [Port 6000] ACK individual recebido para seq=15
+[2026-06-21 16:49:27.695] [Port 6000] Todos os pacotes da janela confirmados. Avançando imediatamente.
+[2026-06-21 16:49:27.695] [Port 6000] Deslizando a base da janela em 16 pacote(s).
+[2026-06-21 16:49:27.695] [Port 6000] Enviando pacote seq=16
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=17
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=18
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=19
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=20
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=21
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=22
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=23
+[2026-06-21 16:49:27.696] [Port 6000] Enviando pacote seq=24
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=25
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=26
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=27
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=28
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=29
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=30
+[2026-06-21 16:49:27.697] [Port 6000] Enviando pacote seq=31
+[2026-06-21 16:49:27.981] [Port 6000] Enviando pacote seq=16
+[2026-06-21 16:49:27.982] [Port 6000] Enviando pacote seq=17
+[2026-06-21 16:49:27.982] [Port 6000] Enviando pacote seq=18
+[2026-06-21 16:49:27.982] [Port 6000] Enviando pacote seq=19
+[2026-06-21 16:49:27.982] [Port 6000] Enviando pacote seq=20
+[2026-06-21 16:49:27.982] [Port 6000] Enviando pacote seq=21
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=22
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=23
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=24
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=25
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=26
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=27
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=28
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=29
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=30
+[2026-06-21 16:49:27.983] [Port 6000] Enviando pacote seq=31
+[2026-06-21 16:49:28.066] [Port 6000] ACK individual recebido para seq=16
+[2026-06-21 16:49:28.068] [Port 6000] ACK individual recebido para seq=17
+[2026-06-21 16:49:28.068] [Port 6000] ACK individual recebido para seq=18
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=19
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=20
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=21
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=22
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=23
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=24
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=25
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=26
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=27
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=28
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=29
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=30
+[2026-06-21 16:49:28.069] [Port 6000] ACK individual recebido para seq=31
+[2026-06-21 16:49:28.069] [Port 6000] Todos os pacotes da janela confirmados. Avançando imediatamente.
+[2026-06-21 16:49:28.069] [Port 6000] Deslizando a base da janela em 16 pacote(s).
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=32
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=33
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=34
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=35
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=36
+[2026-06-21 16:49:28.070] [Port 6000] Enviando pacote seq=37
+[2026-06-21 16:49:28.071] [Port 6000] Enviando pacote seq=38
+[2026-06-21 16:49:28.071] [Port 6000] Enviando pacote seq=39
+[2026-06-21 16:49:28.071] [Port 6000] Enviando pacote seq=40
+[2026-06-21 16:49:28.071] [Port 6000] Enviando pacote seq=41
+[2026-06-21 16:49:28.072] [Port 6000] Enviando pacote seq=42
+[2026-06-21 16:49:28.072] [Port 6000] Enviando pacote seq=43
+[2026-06-21 16:49:28.072] [Port 6000] Enviando pacote seq=44
+[2026-06-21 16:49:28.072] [Port 6000] Enviando pacote seq=45
+[2026-06-21 16:49:28.072] [Port 6000] Enviando pacote seq=46
+[2026-06-21 16:49:28.073] [Port 6000] Enviando pacote seq=47
+[2026-06-21 16:49:28.174] [Port 6000] Enviando pacote seq=32
+[2026-06-21 16:49:28.174] [Port 6000] Enviando pacote seq=33
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=34
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=35
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=36
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=37
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=38
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=39
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=40
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=41
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=42
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=43
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=44
+[2026-06-21 16:49:28.175] [Port 6000] Enviando pacote seq=45
+[2026-06-21 16:49:28.176] [Port 6000] Enviando pacote seq=46
+[2026-06-21 16:49:28.176] [Port 6000] Enviando pacote seq=47
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=32
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=33
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=34
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=35
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=36
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=37
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=38
+[2026-06-21 16:49:28.277] [Port 6000] Enviando pacote seq=39
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=40
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=41
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=42
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=43
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=44
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=45
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=46
+[2026-06-21 16:49:28.278] [Port 6000] Enviando pacote seq=47
+[2026-06-21 16:49:28.443] [Port 6000] ACK individual recebido para seq=32
+[2026-06-21 16:49:28.443] [Port 6000] ACK individual recebido para seq=33
+[2026-06-21 16:49:28.443] [Port 6000] ACK individual recebido para seq=34
+[2026-06-21 16:49:28.443] [Port 6000] ACK individual recebido para seq=35
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=36
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=37
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=38
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=39
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=40
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=41
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=42
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=43
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=44
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=45
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=46
+[2026-06-21 16:49:28.444] [Port 6000] ACK individual recebido para seq=47
+[2026-06-21 16:49:28.444] [Port 6000] Todos os pacotes da janela confirmados. Avançando imediatamente.
+[2026-06-21 16:49:28.444] [Port 6000] Deslizando a base da janela em 16 pacote(s).
+[2026-06-21 16:49:28.444] [Port 6000] Enviando pacote seq=48
+[2026-06-21 16:49:28.444] [Port 6000] Enviando pacote seq=49
+[2026-06-21 16:49:28.444] [Port 6000] Enviando pacote seq=50
+[2026-06-21 16:49:28.445] [Port 6000] Enviando pacote seq=51
+[2026-06-21 16:49:28.445] [Port 6000] Enviando pacote seq=52
+[2026-06-21 16:49:28.445] [Port 6000] Enviando pacote seq=53
+[2026-06-21 16:49:28.729] [Port 6000] Enviando pacote seq=48
+[2026-06-21 16:49:28.730] [Port 6000] Enviando pacote seq=49
+[2026-06-21 16:49:28.731] [Port 6000] Enviando pacote seq=50
+[2026-06-21 16:49:28.731] [Port 6000] Enviando pacote seq=51
+[2026-06-21 16:49:28.731] [Port 6000] Enviando pacote seq=52
+[2026-06-21 16:49:28.731] [Port 6000] Enviando pacote seq=53
+[2026-06-21 16:49:28.814] [Port 6000] ACK individual recebido para seq=48
+[2026-06-21 16:49:28.816] [Port 6000] ACK individual recebido para seq=49
+[2026-06-21 16:49:28.816] [Port 6000] ACK individual recebido para seq=50
+[2026-06-21 16:49:28.816] [Port 6000] ACK individual recebido para seq=51
+[2026-06-21 16:49:28.816] [Port 6000] ACK individual recebido para seq=52
+[2026-06-21 16:49:28.816] [Port 6000] ACK individual recebido para seq=53
+[2026-06-21 16:49:28.816] [Port 6000] Todos os pacotes da janela confirmados. Avançando imediatamente.
+[2026-06-21 16:49:28.816] [Port 6000] Deslizando a base da janela em 6 pacote(s).
+[2026-06-21 16:49:28.820] [Port 6000] Envio concluído em 1863 ms.
+[2026-06-21 16:49:28.821] [Port 6000] FINISH SEND THREAD: host: 192.168.0.101, port: 6000
+[2026-06-21 16:49:28.821] [main] Encerrando conexão...
+[2026-06-21 16:49:28.821] [main] Enviando pacote FIN...
+[2026-06-21 16:49:28.821] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:28.923] [main] Ocorreu timeout ao aguardar o FIN+ACK.
+[2026-06-21 16:49:28.923] [main] Enviando pacote FIN...
+[2026-06-21 16:49:28.923] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.024] [main] Ocorreu timeout ao aguardar o FIN+ACK.
+[2026-06-21 16:49:29.024] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.025] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.093] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.093] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.093] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.095] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.095] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.096] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.096] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.096] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.096] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.096] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.096] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.096] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.096] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.096] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.096] [main] Aguardando pacote FIN+ACK...
+[2026-06-21 16:49:29.096] [main] Não recebi um pacote válido.
+[2026-06-21 16:49:29.096] [main] Enviando pacote FIN...
+[2026-06-21 16:49:29.096] [main] Aguardando pacote FIN+ACK...
