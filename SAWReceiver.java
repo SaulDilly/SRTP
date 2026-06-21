@@ -5,7 +5,7 @@ import java.net.SocketTimeoutException;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
-public class SAWReceiver {
+public class SAWReceiver implements ReceiverInterface{
 
     private static final int SEQ_MASK = 0x3FFF;
     private static final int TIMEOUT = 100;

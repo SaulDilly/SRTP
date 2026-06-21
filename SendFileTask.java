@@ -1,10 +1,10 @@
 public class SendFileTask implements Runnable {
-    private SAWSender sender;
+    private SenderInterface sender;
     private String filePath;
     private int port;
     private String host;
 
-    public SendFileTask(SAWSender sender, String host, int port, String filePath) {
+    public SendFileTask(SenderInterface sender, String host, int port, String filePath) {
         this.sender = sender;
         this.host = host;
         this.filePath = filePath;

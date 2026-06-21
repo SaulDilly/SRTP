@@ -26,12 +26,15 @@ public class Srtp {
             ConnectionHandler ch = new ConnectionHandler();
             ch.establishConnection(parser.getHost(), parser.getPort(), 10);
             // Inicia envio a partir da porta 6000
-            Thread sendThread = new Thread(new SendFileTask(new SAWSender(), parser.getHost(), parser.getPort(), parser.getFilePath()));
+            Thread sendThread = new Thread(new SendFileTask(ModeFactory.createSender(parser.getMode(), ch.getHandshakeLength()), 
+                                                            parser.getHost(), 
+                                                            parser.getPort(), 
+                                                            parser.getFilePath()));
             sendThread.setName("sender-file-transfer");
             sendThread.start();
             // Inicia a thread de recebimento na porta 6001 para receber o arquivo resposta
-            SAWReceiver receiver = new SAWReceiver();
-            Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort() + 1));
+            Thread receiveThread = new Thread(new ReceiveFileTask(ModeFactory.createReceiver(parser.getMode(), ch.getHandshakeLength()), 
+                                                                  parser.getPort() + 1));
             receiveThread.setName("sender-receive-response");
             receiveThread.start();
             sendThread.join();
@@ -53,12 +56,15 @@ public class Srtp {
             ConnectionHandler ch = new ConnectionHandler();
             String host = ch.listenConnection(parser.getPort(), 8);
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
-            Thread receiveThread = new Thread(new ReceiveFileTask(new SAWReceiver(), parser.getPort()));
+            Thread receiveThread = new Thread(new ReceiveFileTask(ModeFactory.createReceiver(parser.getMode(), ch.getHandshakeLength()), 
+                                                                  parser.getPort()));
             receiveThread.setName("receiver-file-transfer");
             receiveThread.start();
             // Inicia envio a partir da porta 6001 para enviar o arquivo resposta
-            SAWSender sender = new SAWSender();
-            Thread sendThread = new Thread(new SendFileTask(sender, host, parser.getPort() + 1, "envio_resposta.txt"));
+            Thread sendThread = new Thread(new SendFileTask(ModeFactory.createSender(parser.getMode(), ch.getHandshakeLength()), 
+                                                            host, 
+                                                            parser.getPort() + 1,
+                                                             "envio_resposta.txt"));
             sendThread.setName("receiver-send-response");
             sendThread.start();
             sendThread.join();
@@ -74,5 +80,6 @@ public class Srtp {
         System.out.println("Uso:");
         System.out.println("  <executável> --listen --port 6000");
         System.out.println("  <executável> --host 192.168.1.10 --port 6000 --file arquivo.txt");
+        System.out.println("  <executável> --host 192.168.1.10 --port 6000 --file arquivo.txt --mode [saw|gbn|sr]");
     }
 }

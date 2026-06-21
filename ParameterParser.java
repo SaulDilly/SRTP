@@ -3,12 +3,14 @@ public class ParameterParser {
     private String host;
     private int port;
     private String filePath;
+    private String mode;
 
     public ParameterParser(String[] args) {
         this.listener = false;
         this.host = null;
         this.port = -1;
         this.filePath = null;
+        this.mode = null;
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i].toLowerCase()) {
@@ -30,6 +32,11 @@ public class ParameterParser {
                         this.filePath = args[++i];
                     }
                     break;
+                case "--mode":
+                    if (i + 1 < args.length) {
+                        this.mode = args[++i];
+                    }
+                    break;
             }
         }
     }
@@ -48,6 +55,10 @@ public class ParameterParser {
     
     public String getFilePath() {
         return filePath;
+    }
+
+    public String getMode() {
+        return mode;
     }
 
     public boolean isValid() {

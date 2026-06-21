@@ -1,8 +1,8 @@
 public class ReceiveFileTask implements Runnable {
-    private SAWReceiver receiver;
+    private ReceiverInterface receiver;
     private int port;
 
-    public ReceiveFileTask(SAWReceiver receiver, int port) {
+    public ReceiveFileTask(ReceiverInterface receiver, int port) {
         this.receiver = receiver;
         this.port = port;
     }
