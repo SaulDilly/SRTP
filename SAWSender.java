@@ -132,7 +132,7 @@ public class SAWSender implements SenderInterface {
     }
     
     private boolean isAckForSeq(SrtpPacket packet, int expectedSeq) {
-        return packet != null && packet.isAck() && packet.getAckSeq() == (expectedSeq & SEQ_MASK);
+        return packet != null && packet.isAck() && packet.getAckSeq() == (expectedSeq & SEQ_MASK) && !packet.isSyn();
     }
     
 }
