@@ -79,14 +79,19 @@ public class GBNSender implements SenderInterface {
                     // Incrementa a sequência aplicando a máscara (wrap-around)
                     seq = (seq + 1) & SEQ_MASK; 
                 }
-                
+
+                boolean enviarJanela = true;
+
                 // Envia a janela, com proteção de retransmissão
                 while (true) {
-                    for (int i = 0; i < packetsInWindow; i++) {
-                        if (windowData[i] != null) {
-                            Log.writeLine("Enviando pacote seq=" + window[i].getSeq());
-                            socket.send(new DatagramPacket(windowData[i], windowData[i].length, address, port));
+                    if (enviarJanela) {
+                        for (int i = 0; i < packetsInWindow; i++) {
+                            if (windowData[i] != null) {
+                                Log.writeLine("Enviando pacote seq=" + window[i].getSeq());
+                                socket.send(new DatagramPacket(windowData[i], windowData[i].length, address, port));
+                            }
                         }
+                        enviarJanela = false; // Evita reenvio imediato da janela
                     }
 
                     // Espera ACK do envio
@@ -137,13 +142,20 @@ public class GBNSender implements SenderInterface {
                             packetsInWindow -= ackedCount;
                             break; 
 
-                        } else if (ackedCount > packetsInWindow) {
+                        } else if (responsePacket.isNack() && ackedCount == 0) {
+                            // O NACK recebido é para o primeiro pacote da janela, ou seja, o próximo a enviar. Reenvia a janela imediatamente.
+                            Log.writeLine("NACK recebido para o primeiro pacote da janela. Reenviando janela.");
+                            enviarJanela = true; // Sinaliza para reenviar a janela no próximo loop
+
+                        }
+                        else if (ackedCount > packetsInWindow) {
                             // Um ACK fora do esperado. Pode ser um pacote duplicado atrasado na rede.
                             Log.writeLine("ACK ignorado (fora da janela de envio). Aguardando timeout...");
                             // O loop continuará aguardando (podendo dar timeout e reenviar a janela)
                         }
                     } catch (SocketTimeoutException e) {
                         Log.writeLine("Ocorreu timeout no envio da janela. Será reenviada.");
+                        enviarJanela = true;
                     }
                 }
             }   
