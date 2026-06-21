@@ -110,7 +110,7 @@ public class SRSender implements SenderInterface {
                         
                         SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(ackDatagram.getData(), ackDatagram.getLength()));
                         
-                        if (responsePacket != null) {
+                        if (responsePacket != null && (responsePacket.isAck() || responsePacket.isNack())) {
                             int ackSeq = responsePacket.getAckSeq();
                             int index = findIndexInWindow(ackSeq, packetsInWindow);
                             
