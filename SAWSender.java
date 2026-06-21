@@ -16,59 +16,6 @@ public class SAWSender {
     }
 
     /*
-     * Estabelece a conexão com o host especificado, realizando o handshake de três vias (SYN, SYN+ACK, ACK)
-     */ 
-    public void establishConnection(String host, int port) {
-        Log.writeLine("Iniciando conexão...");
-        // Monta o pacote SYN e calcula o CRC32 antes de enviar
-        SrtpPacket synPacket = PacketFactory.createSynPacket(0);
-        synPacket.calculateCrc32();
-        byte[] packetBytes = synPacket.toBytes();
-
-        try (DatagramSocket socket = new DatagramSocket(port)) {
-            // Monta o datagrama com base no pacote convertido para bytes
-            socket.setSoTimeout(TIMEOUT);
-            InetAddress address = InetAddress.getByName(host);
-            DatagramPacket datagram = new DatagramPacket(packetBytes, packetBytes.length, address, port);
-            // Cabeçalho tem 9 bytes
-            byte[] receiveBuffer = new byte[9];
-
-            while (true) {
-                // Envia SYN
-                Log.writeLine("Enviando pacote SYN...");
-                socket.send(datagram);
-
-                try {
-                    // Aguarda o SYN+ACK
-                    DatagramPacket response = new DatagramPacket(receiveBuffer, receiveBuffer.length);
-                    Log.writeLine("Aguardando pacote SYN+ACK...");
-
-                    socket.receive(response);
-
-                    SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
-                    // Se é um pacote válido e é um SYN+ACK, sai do loop
-                    if (responsePacket != null && responsePacket.isSyn() && responsePacket.isAck()) {
-                        break;
-                    }
-                    Log.writeLine("Não recebi um pacote válido.");
-                } catch (SocketTimeoutException timeoutException) {
-                    Log.writeLine("Ocorreu timeout ao aguardar o SYN+ACK.");
-                }
-            }
-
-            // Envia o ACK final para completar o handshake
-            SrtpPacket ackPacket = PacketFactory.createAckPacket(0);
-            ackPacket.calculateCrc32();
-            byte[] ackBytes = ackPacket.toBytes();
-            DatagramPacket ackDatagram = new DatagramPacket(ackBytes, ackBytes.length, address, port);
-            socket.send(ackDatagram);
-            Log.writeLine("Enviando pacote ACK final para completar o handshake...");
-        } catch (Exception exception) {
-            throw new RuntimeException("Falha ao enviar o pacote SYN via UDP", exception);
-        }
-    }
-
-    /*
      * Envia arquivo, pacote a pacote
      * Envia, aguarda o ACK para cada pacote, e em caso de timeout, reenvia o pacote até receber o ACK correspondente
      */ 
@@ -182,57 +129,10 @@ public class SAWSender {
             Log.writeLine("Envio concluído em " + elapsedMillis + " ms.");
         }
 
-
     }
-
+    
     private boolean isAckForSeq(SrtpPacket packet, int expectedSeq) {
         return packet != null && packet.isAck() && packet.getAckSeq() == (expectedSeq & SEQ_MASK);
-    }
-
-    /*
-     * Encerra a conexão, enviando FIN e aguardando FIN+ACK
-     */
-    public void endConnection(String host, int port) {
-        Log.writeLine("Encerrando conexão...");
-        // Monta o pacote FIN e calcula o CRC32 antes de enviar
-        SrtpPacket finPacket = PacketFactory.createFinPacket();
-        finPacket.calculateCrc32();
-        byte[] packetBytes = finPacket.toBytes();
-
-        try (DatagramSocket socket = new DatagramSocket(port)) {
-            // Monta o datagrama com base no pacote convertido para bytes
-            socket.setSoTimeout(TIMEOUT);
-            InetAddress address = InetAddress.getByName(host);
-            DatagramPacket datagram = new DatagramPacket(packetBytes, packetBytes.length, address, port);
-            // Cabeçalho tem 9 bytes
-            byte[] receiveBuffer = new byte[9];
-
-            while (true) {
-                // Envia FIN
-                Log.writeLine("Enviando pacote FIN...");
-                socket.send(datagram);
-
-                try {
-                    // Aguarda o FIN+ACK
-                    DatagramPacket response = new DatagramPacket(receiveBuffer, receiveBuffer.length);
-                    Log.writeLine("Aguardando pacote FIN+ACK...");
-
-                    socket.receive(response);
-
-                    SrtpPacket responsePacket = SrtpPacket.fromBytes(Arrays.copyOf(response.getData(), response.getLength()));
-                    // Se é um pacote válido e é um FIN+ACK, sai do loop
-                    if (responsePacket != null && responsePacket.isFin() && responsePacket.isAck()) {
-                        break;
-                    }
-                    Log.writeLine("Não recebi um pacote válido.");
-                } catch (SocketTimeoutException timeoutException) {
-                    Log.writeLine("Ocorreu timeout ao aguardar o FIN+ACK.");
-                }
-            }
-        } catch (Exception exception) {
-            throw new RuntimeException("Falha ao enviar o pacote FIN via UDP", exception);
-        }
-
     }
     
 }

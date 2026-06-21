@@ -23,10 +23,9 @@ public class Srtp {
         Log.initSender();
         try {
             // Estabele conexão na porta 6000 com o receiver
-            SAWSender sender = new SAWSender();
-            sender.establishConnection(parser.getHost(), parser.getPort());
+            ConnectionHandler.establishConnection(parser.getHost(), parser.getPort());
             // Inicia envio a partir da porta 6000
-            Thread sendThread = new Thread(new SendFileTask(sender, parser.getHost(), parser.getPort(), parser.getFilePath()));
+            Thread sendThread = new Thread(new SendFileTask(new SAWSender(), parser.getHost(), parser.getPort(), parser.getFilePath()));
             sendThread.setName("sender-file-transfer");
             sendThread.start();
             // Inicia a thread de recebimento na porta 6001 para receber o arquivo resposta
@@ -36,7 +35,7 @@ public class Srtp {
             receiveThread.start();
             sendThread.join();
             // Finaliza a conexão
-            sender.endConnection(parser.getHost(), parser.getPort());
+            ConnectionHandler.endConnection(parser.getHost(), parser.getPort());
             receiveThread.join();
         } finally {
             Log.close();
@@ -50,10 +49,9 @@ public class Srtp {
         Log.initReceiver();
         try {
             // Estabele conexão na porta 6000 com o sender
-            SAWReceiver receiver = new SAWReceiver();
-            String host = receiver.listenConnection(parser.getPort());
+            String host = ConnectionHandler.listenConnection(parser.getPort());
             // Inicia a thread de recebimento na porta 6000 para receber o arquivo enviado
-            Thread receiveThread = new Thread(new ReceiveFileTask(receiver, parser.getPort()));
+            Thread receiveThread = new Thread(new ReceiveFileTask(new SAWReceiver(), parser.getPort()));
             receiveThread.setName("receiver-file-transfer");
             receiveThread.start();
             // Inicia envio a partir da porta 6001 para enviar o arquivo resposta
@@ -62,8 +60,8 @@ public class Srtp {
             sendThread.setName("receiver-send-response");
             sendThread.start();
             sendThread.join();
-            // Finaliza a conexão
-            sender.endConnection(host, parser.getPort() + 1);
+            // Finaliza a conexão na porta 6001
+            ConnectionHandler.endConnection(host, parser.getPort() + 1);
             receiveThread.join();
         } finally {
             Log.close();
