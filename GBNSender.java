@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class GBNSender implements SenderInterface {
     
     private static final int SEQ_MASK = 0x3FFF;
-    private static final int TIMEOUT = 110;
+    private static final int TIMEOUT = 100;
     private int seq;
     private SrtpPacket[] window;
     private byte[][] windowData;
